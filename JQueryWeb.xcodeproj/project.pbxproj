@@ -15,6 +15,8 @@
 		688FEC9C24472AE00086B2BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 688FEC9B24472AE00086B2BA /* main.m */; };
 		688FECA624472AE00086B2BA /* JQueryWebTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 688FECA524472AE00086B2BA /* JQueryWebTests.m */; };
 		688FECB124472AE00086B2BA /* JQueryWebUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 688FECB024472AE00086B2BA /* JQueryWebUITests.m */; };
+		688FECC224472FF50086B2BA /* JQueryWebTagMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 688FECC124472FF50086B2BA /* JQueryWebTagMaker.m */; };
+		688FECC5244731640086B2BA /* JQueryWebMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 688FECC4244731640086B2BA /* JQueryWebMaker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,11 @@
 		688FECAC24472AE00086B2BA /* JQueryWebUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JQueryWebUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		688FECB024472AE00086B2BA /* JQueryWebUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JQueryWebUITests.m; sourceTree = "<group>"; };
 		688FECB224472AE00086B2BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		688FECBF24472C090086B2BA /* JQueryWebMacroJavaScript.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JQueryWebMacroJavaScript.h; sourceTree = "<group>"; };
+		688FECC024472FF50086B2BA /* JQueryWebTagMaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JQueryWebTagMaker.h; sourceTree = "<group>"; };
+		688FECC124472FF50086B2BA /* JQueryWebTagMaker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JQueryWebTagMaker.m; sourceTree = "<group>"; };
+		688FECC3244731640086B2BA /* JQueryWebMaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JQueryWebMaker.h; sourceTree = "<group>"; };
+		688FECC4244731640086B2BA /* JQueryWebMaker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JQueryWebMaker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +108,7 @@
 		688FEC8B24472ADE0086B2BA /* JQueryWeb */ = {
 			isa = PBXGroup;
 			children = (
+				688FECBE24472BB60086B2BA /* JQueryWeb */,
 				688FEC8C24472ADE0086B2BA /* AppDelegate.h */,
 				688FEC8D24472ADE0086B2BA /* AppDelegate.m */,
 				688FEC8F24472ADE0086B2BA /* ViewController.h */,
@@ -130,6 +138,18 @@
 				688FECB224472AE00086B2BA /* Info.plist */,
 			);
 			path = JQueryWebUITests;
+			sourceTree = "<group>";
+		};
+		688FECBE24472BB60086B2BA /* JQueryWeb */ = {
+			isa = PBXGroup;
+			children = (
+				688FECBF24472C090086B2BA /* JQueryWebMacroJavaScript.h */,
+				688FECC024472FF50086B2BA /* JQueryWebTagMaker.h */,
+				688FECC124472FF50086B2BA /* JQueryWebTagMaker.m */,
+				688FECC3244731640086B2BA /* JQueryWebMaker.h */,
+				688FECC4244731640086B2BA /* JQueryWebMaker.m */,
+			);
+			path = JQueryWeb;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +214,7 @@
 		688FEC8124472ADE0086B2BA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = JQueryWeb;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Bryant Reyn";
 				TargetAttributes = {
@@ -263,7 +284,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				688FEC9124472ADE0086B2BA /* ViewController.m in Sources */,
+				688FECC224472FF50086B2BA /* JQueryWebTagMaker.m in Sources */,
 				688FEC9C24472AE00086B2BA /* main.m in Sources */,
+				688FECC5244731640086B2BA /* JQueryWebMaker.m in Sources */,
 				688FEC8E24472ADE0086B2BA /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
