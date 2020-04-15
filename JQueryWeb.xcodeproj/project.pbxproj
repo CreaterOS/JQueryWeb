@@ -1,0 +1,580 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		688FEC8E24472ADE0086B2BA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 688FEC8D24472ADE0086B2BA /* AppDelegate.m */; };
+		688FEC9124472ADE0086B2BA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 688FEC9024472ADE0086B2BA /* ViewController.m */; };
+		688FEC9424472ADE0086B2BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 688FEC9224472ADE0086B2BA /* Main.storyboard */; };
+		688FEC9624472AE00086B2BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 688FEC9524472AE00086B2BA /* Assets.xcassets */; };
+		688FEC9924472AE00086B2BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 688FEC9724472AE00086B2BA /* LaunchScreen.storyboard */; };
+		688FEC9C24472AE00086B2BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 688FEC9B24472AE00086B2BA /* main.m */; };
+		688FECA624472AE00086B2BA /* JQueryWebTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 688FECA524472AE00086B2BA /* JQueryWebTests.m */; };
+		688FECB124472AE00086B2BA /* JQueryWebUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 688FECB024472AE00086B2BA /* JQueryWebUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		688FECA224472AE00086B2BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 688FEC8124472ADE0086B2BA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 688FEC8824472ADE0086B2BA;
+			remoteInfo = JQueryWeb;
+		};
+		688FECAD24472AE00086B2BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 688FEC8124472ADE0086B2BA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 688FEC8824472ADE0086B2BA;
+			remoteInfo = JQueryWeb;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		688FEC8924472ADE0086B2BA /* JQueryWeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JQueryWeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		688FEC8C24472ADE0086B2BA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		688FEC8D24472ADE0086B2BA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		688FEC8F24472ADE0086B2BA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		688FEC9024472ADE0086B2BA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		688FEC9324472ADE0086B2BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		688FEC9524472AE00086B2BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		688FEC9824472AE00086B2BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		688FEC9A24472AE00086B2BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		688FEC9B24472AE00086B2BA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		688FECA124472AE00086B2BA /* JQueryWebTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JQueryWebTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		688FECA524472AE00086B2BA /* JQueryWebTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JQueryWebTests.m; sourceTree = "<group>"; };
+		688FECA724472AE00086B2BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		688FECAC24472AE00086B2BA /* JQueryWebUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JQueryWebUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		688FECB024472AE00086B2BA /* JQueryWebUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JQueryWebUITests.m; sourceTree = "<group>"; };
+		688FECB224472AE00086B2BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		688FEC8624472ADE0086B2BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		688FEC9E24472AE00086B2BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		688FECA924472AE00086B2BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		688FEC8024472ADE0086B2BA = {
+			isa = PBXGroup;
+			children = (
+				688FEC8B24472ADE0086B2BA /* JQueryWeb */,
+				688FECA424472AE00086B2BA /* JQueryWebTests */,
+				688FECAF24472AE00086B2BA /* JQueryWebUITests */,
+				688FEC8A24472ADE0086B2BA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		688FEC8A24472ADE0086B2BA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				688FEC8924472ADE0086B2BA /* JQueryWeb.app */,
+				688FECA124472AE00086B2BA /* JQueryWebTests.xctest */,
+				688FECAC24472AE00086B2BA /* JQueryWebUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		688FEC8B24472ADE0086B2BA /* JQueryWeb */ = {
+			isa = PBXGroup;
+			children = (
+				688FEC8C24472ADE0086B2BA /* AppDelegate.h */,
+				688FEC8D24472ADE0086B2BA /* AppDelegate.m */,
+				688FEC8F24472ADE0086B2BA /* ViewController.h */,
+				688FEC9024472ADE0086B2BA /* ViewController.m */,
+				688FEC9224472ADE0086B2BA /* Main.storyboard */,
+				688FEC9524472AE00086B2BA /* Assets.xcassets */,
+				688FEC9724472AE00086B2BA /* LaunchScreen.storyboard */,
+				688FEC9A24472AE00086B2BA /* Info.plist */,
+				688FEC9B24472AE00086B2BA /* main.m */,
+			);
+			path = JQueryWeb;
+			sourceTree = "<group>";
+		};
+		688FECA424472AE00086B2BA /* JQueryWebTests */ = {
+			isa = PBXGroup;
+			children = (
+				688FECA524472AE00086B2BA /* JQueryWebTests.m */,
+				688FECA724472AE00086B2BA /* Info.plist */,
+			);
+			path = JQueryWebTests;
+			sourceTree = "<group>";
+		};
+		688FECAF24472AE00086B2BA /* JQueryWebUITests */ = {
+			isa = PBXGroup;
+			children = (
+				688FECB024472AE00086B2BA /* JQueryWebUITests.m */,
+				688FECB224472AE00086B2BA /* Info.plist */,
+			);
+			path = JQueryWebUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		688FEC8824472ADE0086B2BA /* JQueryWeb */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 688FECB524472AE00086B2BA /* Build configuration list for PBXNativeTarget "JQueryWeb" */;
+			buildPhases = (
+				688FEC8524472ADE0086B2BA /* Sources */,
+				688FEC8624472ADE0086B2BA /* Frameworks */,
+				688FEC8724472ADE0086B2BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JQueryWeb;
+			productName = JQueryWeb;
+			productReference = 688FEC8924472ADE0086B2BA /* JQueryWeb.app */;
+			productType = "com.apple.product-type.application";
+		};
+		688FECA024472AE00086B2BA /* JQueryWebTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 688FECB824472AE00086B2BA /* Build configuration list for PBXNativeTarget "JQueryWebTests" */;
+			buildPhases = (
+				688FEC9D24472AE00086B2BA /* Sources */,
+				688FEC9E24472AE00086B2BA /* Frameworks */,
+				688FEC9F24472AE00086B2BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				688FECA324472AE00086B2BA /* PBXTargetDependency */,
+			);
+			name = JQueryWebTests;
+			productName = JQueryWebTests;
+			productReference = 688FECA124472AE00086B2BA /* JQueryWebTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		688FECAB24472AE00086B2BA /* JQueryWebUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 688FECBB24472AE00086B2BA /* Build configuration list for PBXNativeTarget "JQueryWebUITests" */;
+			buildPhases = (
+				688FECA824472AE00086B2BA /* Sources */,
+				688FECA924472AE00086B2BA /* Frameworks */,
+				688FECAA24472AE00086B2BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				688FECAE24472AE00086B2BA /* PBXTargetDependency */,
+			);
+			name = JQueryWebUITests;
+			productName = JQueryWebUITests;
+			productReference = 688FECAC24472AE00086B2BA /* JQueryWebUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		688FEC8124472ADE0086B2BA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Bryant Reyn";
+				TargetAttributes = {
+					688FEC8824472ADE0086B2BA = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					688FECA024472AE00086B2BA = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 688FEC8824472ADE0086B2BA;
+					};
+					688FECAB24472AE00086B2BA = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 688FEC8824472ADE0086B2BA;
+					};
+				};
+			};
+			buildConfigurationList = 688FEC8424472ADE0086B2BA /* Build configuration list for PBXProject "JQueryWeb" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 688FEC8024472ADE0086B2BA;
+			productRefGroup = 688FEC8A24472ADE0086B2BA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				688FEC8824472ADE0086B2BA /* JQueryWeb */,
+				688FECA024472AE00086B2BA /* JQueryWebTests */,
+				688FECAB24472AE00086B2BA /* JQueryWebUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		688FEC8724472ADE0086B2BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				688FEC9924472AE00086B2BA /* LaunchScreen.storyboard in Resources */,
+				688FEC9624472AE00086B2BA /* Assets.xcassets in Resources */,
+				688FEC9424472ADE0086B2BA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		688FEC9F24472AE00086B2BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		688FECAA24472AE00086B2BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		688FEC8524472ADE0086B2BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				688FEC9124472ADE0086B2BA /* ViewController.m in Sources */,
+				688FEC9C24472AE00086B2BA /* main.m in Sources */,
+				688FEC8E24472ADE0086B2BA /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		688FEC9D24472AE00086B2BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				688FECA624472AE00086B2BA /* JQueryWebTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		688FECA824472AE00086B2BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				688FECB124472AE00086B2BA /* JQueryWebUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		688FECA324472AE00086B2BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 688FEC8824472ADE0086B2BA /* JQueryWeb */;
+			targetProxy = 688FECA224472AE00086B2BA /* PBXContainerItemProxy */;
+		};
+		688FECAE24472AE00086B2BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 688FEC8824472ADE0086B2BA /* JQueryWeb */;
+			targetProxy = 688FECAD24472AE00086B2BA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		688FEC9224472ADE0086B2BA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				688FEC9324472ADE0086B2BA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		688FEC9724472AE00086B2BA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				688FEC9824472AE00086B2BA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		688FECB324472AE00086B2BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		688FECB424472AE00086B2BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		688FECB624472AE00086B2BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JQueryWeb/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.crimsonresearch.JQueryWeb;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		688FECB724472AE00086B2BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JQueryWeb/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.crimsonresearch.JQueryWeb;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		688FECB924472AE00086B2BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JQueryWebTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.crimsonresearch.JQueryWebTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JQueryWeb.app/JQueryWeb";
+			};
+			name = Debug;
+		};
+		688FECBA24472AE00086B2BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JQueryWebTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.crimsonresearch.JQueryWebTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JQueryWeb.app/JQueryWeb";
+			};
+			name = Release;
+		};
+		688FECBC24472AE00086B2BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JQueryWebUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.crimsonresearch.JQueryWebUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JQueryWeb;
+			};
+			name = Debug;
+		};
+		688FECBD24472AE00086B2BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JQueryWebUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.crimsonresearch.JQueryWebUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JQueryWeb;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		688FEC8424472ADE0086B2BA /* Build configuration list for PBXProject "JQueryWeb" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				688FECB324472AE00086B2BA /* Debug */,
+				688FECB424472AE00086B2BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		688FECB524472AE00086B2BA /* Build configuration list for PBXNativeTarget "JQueryWeb" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				688FECB624472AE00086B2BA /* Debug */,
+				688FECB724472AE00086B2BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		688FECB824472AE00086B2BA /* Build configuration list for PBXNativeTarget "JQueryWebTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				688FECB924472AE00086B2BA /* Debug */,
+				688FECBA24472AE00086B2BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		688FECBB24472AE00086B2BA /* Build configuration list for PBXNativeTarget "JQueryWebUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				688FECBC24472AE00086B2BA /* Debug */,
+				688FECBD24472AE00086B2BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 688FEC8124472ADE0086B2BA /* Project object */;
+}
