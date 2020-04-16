@@ -16,10 +16,21 @@
 @property (nonatomic,assign)NSUInteger index; /* 下标 */
 @property (nonatomic,weak)NSString *option; /* on操作 */
 @property (nonatomic,weak)NSString *function; /* 函数封装 */
+@property (nonatomic,strong)NSMutableArray *resOnStrArray; /* 存储多个操作 */
 @end
 
 
 @implementation JQueryWebMaker
+
+#pragma mark - 懒加载
+- (NSMutableArray *)resOnStrArray{
+    if (!_resOnStrArray) {
+        _resOnStrArray = [NSMutableArray array];
+    }
+    
+    return _resOnStrArray;
+}
+
 + (JQueryWebMaker * _Nonnull (^)(NSString * _Nonnull))JQuery{
     JQUERY_BLOCK_WEAK;
     return ^JQueryWebMaker*(NSString *tagName){
@@ -133,6 +144,101 @@
         return [self saveOnWithIndex:index option:option function:function];
     };
 }
+
+#pragma mark - ON参数操组(多个操作)
+- (NSMutableArray * _Nonnull (^)(NSString * _Nonnull , ...))onMoreOptions{
+    JQUERY_BLOCK_WEAK;
+    return ^NSMutableArray *(NSString *function,...){
+        JQUERY_BLOCK_STRONG;
+        /* 获取可变参数 */
+        NSString *options = [NSString string];
+        va_list arg_list;
+        
+        va_start(arg_list, function);
+        
+        while ((options = va_arg(arg_list, NSString *))) {
+            /* 处理后加入数组 */
+            NSString *resStr = [self saveOnWithOption:options function:function];
+            [self.resOnStrArray addObject:resStr];
+        }
+        va_end(arg_list);
+        
+        NSMutableArray *tempArray = [NSMutableArray array];
+        @synchronized (self) {
+            tempArray = [self.resOnStrArray copy];
+            /* 清空强引用数组 */
+            [self.resOnStrArray removeAllObjects];
+        }
+        
+        
+        return tempArray;
+    };
+}
+
+
+- (NSMutableArray * _Nonnull (^)(NSUInteger, NSString * _Nonnull, ...))onMoreOptionsWithIndex{
+    JQUERY_BLOCK_WEAK;
+    return ^NSMutableArray *(NSUInteger index,NSString *function,...){
+        JQUERY_BLOCK_STRONG;
+        /* 获取可变参数 */
+        NSString *options = [NSString string];
+        va_list arg_list;
+        
+        va_start(arg_list, function);
+        
+        while ((options = va_arg(arg_list, NSString *))) {
+            /* 处理后加入数组 */
+            NSString *resStr = [self saveOnWithIndex:index option:options function:function];
+            [self.resOnStrArray addObject:resStr];
+        }
+        va_end(arg_list);
+        
+        NSMutableArray *tempArray = [NSMutableArray array];
+        @synchronized (self) {
+            tempArray = [self.resOnStrArray copy];
+            /* 清空强引用数组 */
+            [self.resOnStrArray removeAllObjects];
+        }
+        
+        
+        return tempArray;
+    };
+}
+
+#pragma mark - ON参数操组(多个不同事件)
+- (NSMutableArray * _Nonnull (^)(NSUInteger, ...))onMoreEventWithIndex{
+    JQUERY_BLOCK_WEAK;
+    return ^NSMutableArray *(NSUInteger index,...){
+        JQUERY_BLOCK_STRONG;
+        
+        NSString *eventStr = [NSString string];
+        
+        va_list arg_list;
+        va_start(arg_list,index);
+        
+        
+        while ((eventStr = va_arg(arg_list, NSString *))) {
+            /* 保存到数组中 */
+            /* 取出参数的两部分 options 和 function */
+            NSString *newOption = [eventStr componentsSeparatedByString:@":"][0];
+            NSString *newFunction = [eventStr componentsSeparatedByString:@":"][1];
+            NSLog(@"%@ -- %@",newOption,newFunction);
+            NSString *resStr = [self saveOnWithIndex:index option:newOption function:newFunction];
+            [self.resOnStrArray addObject:resStr];
+        }
+        va_end(arg_list);
+        
+        NSMutableArray *tempArray = [NSMutableArray array];
+        @synchronized (self) {
+            tempArray = [self.resOnStrArray copy];
+            /* 清空强引用数组 */
+            [self.resOnStrArray removeAllObjects];
+        }
+        
+        return self.resOnStrArray;
+    };
+}
+
 
 #pragma mark - 保存on操作信息
 - (NSString * __nonnull)saveOnWithOption:(NSString * __nonnull)option function:(NSString * __nonnull)function{

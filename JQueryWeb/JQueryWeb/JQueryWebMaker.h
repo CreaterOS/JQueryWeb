@@ -38,6 +38,11 @@ NS_ASSUME_NONNULL_BEGIN
 /* ON操作 */
 - (NSString *(^)(NSString *,NSString *))on;
 - (NSString *(^)(NSUInteger,NSString *,NSString *))onWithIndex;
+/* 支持多个事件绑定同一个函数 */
+- (NSMutableArray *(^)(NSString *,...))onMoreOptions;
+- (NSMutableArray *(^)(NSUInteger,NSString *,...))onMoreOptionsWithIndex;
+/* 支持多个事件绑定不同函数 */
+- (NSMutableArray *(^)(NSUInteger,...))onMoreEventWithIndex;
 @end
 
 NS_ASSUME_NONNULL_END
