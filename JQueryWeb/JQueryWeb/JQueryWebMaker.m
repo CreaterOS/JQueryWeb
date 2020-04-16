@@ -11,9 +11,11 @@
 #import "JQueryWebMacroJavaScript.h"
 
 @interface JQueryWebMaker()
-@property (nonatomic,weak)NSString *tagName;
-@property (nonatomic,weak)NSString *context;
-@property (nonatomic,assign)NSUInteger index;
+@property (nonatomic,weak)NSString *tagName; /* 标签名称 */
+@property (nonatomic,weak)NSString *context; /* 文本内容 */
+@property (nonatomic,assign)NSUInteger index; /* 下标 */
+@property (nonatomic,weak)NSString *option; /* on操作 */
+@property (nonatomic,weak)NSString *function; /* 函数封装 */
 @end
 
 
@@ -40,7 +42,7 @@
     JQUERY_BLOCK_WEAK;
     return ^NSString *(NSString *context) {
         JQUERY_BLOCK_STRONG;
-        return [self saveText:context];
+        return [self saveText:context select:JQueryWebMakerTextORVal];
     };
 }
 
@@ -48,7 +50,7 @@
     JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *context){
         JQUERY_BLOCK_STRONG;
-        return [self saveText:context index:index];
+        return [self saveText:context index:index select:JQueryWebMakerTextORVal];
     };
 }
 
@@ -56,7 +58,7 @@
     JQUERY_BLOCK_WEAK;
     return ^NSString *(NSString *context) {
         JQUERY_BLOCK_STRONG;
-        return self.text(context);
+        return [self saveText:context select:JQueryWebMakerHTML];
     };
 }
 
@@ -64,7 +66,7 @@
     JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *context){
         JQUERY_BLOCK_STRONG;
-        return self.textWithIndex(index,context);
+        return [self saveText:context index:index select:JQueryWebMakerHTML];
     };
 }
 
@@ -85,28 +87,90 @@
 }
 
 #pragma mark - 保存文本信息
-- (NSString *__nonnull)saveText:(NSString *)context{
+- (NSString *__nonnull)saveText:(NSString *)context select:(JQueryWebMakerStyle)select{
     NSCParameterAssert(context != NULL);
     
-    _context = context;
-    /* 根据tagName进行选择对应的解析方法 */
-    return [self parseTagName:_tagName options:^NSString *{
-        JQueryWebTagMaker *tagMaker = [JQueryWebTagMaker TagMakerName:self.tagName context:self.context];
-        return [tagMaker parseTagName];
-    }];
+    @synchronized (self) {
+        _context = context;
+        /* 根据tagName进行选择对应的解析方法 */
+        return [self parseTagName:_tagName options:^NSString *{
+            
+                JQueryWebTagMaker *tagMaker = [JQueryWebTagMaker TagMakerName:self.tagName context:self.context];
+                return [tagMaker parseTextTagNameWithSelect:select];
+            
+        }];
+    }
 }
 
-- (NSString *__nonnull)saveText:(NSString *)context index:(NSUInteger)index{
+- (NSString *__nonnull)saveText:(NSString *)context index:(NSUInteger)index select:(JQueryWebMakerStyle)select{
     NSCParameterAssert(context != NULL);
     
-    _context = context;
-    _index = index;
-    /* 根据tagName进行选择对应的解析方法 */
-    return [self parseTagName:_tagName options:^NSString *{
-        JQueryWebTagMaker *tagMaker = [JQueryWebTagMaker TagMakerName:self.tagName context:self.context];
-        return [tagMaker parseTagNameWithIndex:index];
-    }];
+    @synchronized (self) {
+        _context = context;
+        _index = index;
+        /* 根据tagName进行选择对应的解析方法 */
+        return [self parseTagName:_tagName options:^NSString *{
+            
+            JQueryWebTagMaker *tagMaker = [JQueryWebTagMaker TagMakerName:self.tagName context:self.context];
+            return [tagMaker parseTextTagNameWithSelect:select index:index];
+        }];
+    }
 }
+
+#pragma mark - ON操作
+- (NSString * _Nonnull (^)(NSString * _Nonnull, NSString * _Nonnull))on{
+    JQUERY_BLOCK_WEAK;
+    return ^NSString *(NSString *option,NSString *function){
+        JQUERY_BLOCK_STRONG;
+        return [self saveOnWithOption:option function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull, NSString * _Nonnull))onWithIndex{
+    JQUERY_BLOCK_WEAK;
+    return ^NSString *(NSUInteger index,NSString *option,NSString *function){
+        JQUERY_BLOCK_STRONG;
+        return [self saveOnWithIndex:index option:option function:function];
+    };
+}
+
+#pragma mark - 保存on操作信息
+- (NSString * __nonnull)saveOnWithOption:(NSString * __nonnull)option function:(NSString * __nonnull)function{
+    NSCParameterAssert(option != NULL);
+    NSCParameterAssert(function != NULL);
+    
+    @synchronized (self) {
+        _option = option;
+        _function = function;
+        
+        return [self parseTagName:_tagName options:^NSString *{
+            JQueryWebTagMaker *tagMaker = [JQueryWebTagMaker TagMakerName:self.tagName option:self.option function:self.function];
+            return [tagMaker parseTextTagNameWithSelect:JQueryWebMakerON];
+        }];
+    }
+    
+    return [NSString string];
+}
+
+
+- (NSString * __nonnull)saveOnWithIndex:(NSUInteger)index option:(NSString * __nonnull)option function:(NSString * __nonnull)function{
+    NSCParameterAssert(option != NULL);
+    NSCParameterAssert(function != NULL);
+    
+    @synchronized (self) {
+        _option = option;
+        _function = function;
+        
+        return [self parseTagName:_tagName options:^NSString *{
+            JQueryWebTagMaker *tagMaker = [JQueryWebTagMaker TagMakerName:self.tagName option:self.option function:self.function];
+            return [tagMaker parseTextTagNameWithSelect:JQueryWebMakerON index:index];
+        }];
+    }
+    
+    return [NSString string];
+}
+
+
 
 #pragma mark - 解析标签
 - (NSString *__nonnull)parseTagName:(NSString *)tagName options:(NSString *(^)(void))option{

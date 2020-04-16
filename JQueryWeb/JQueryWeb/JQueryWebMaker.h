@@ -13,6 +13,13 @@
 
 #import <Foundation/Foundation.h>
 
+/* 枚举法设置标签操作种类 */
+typedef NS_ENUM(NSInteger, JQueryWebMakerStyle) {
+    JQueryWebMakerTextORVal, /* innerText */
+    JQueryWebMakerHTML, /* innerHTML */
+    JQueryWebMakerON /* on */
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JQueryWebMaker : NSObject
@@ -27,6 +34,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *(^)(NSUInteger,NSString *))htmlWithIndex;
 - (NSString *(^)(NSString *))val;
 - (NSString *(^)(NSUInteger,NSString *))valWithIndex;
+
+/* ON操作 */
+- (NSString *(^)(NSString *,NSString *))on;
+- (NSString *(^)(NSUInteger,NSString *,NSString *))onWithIndex;
 @end
 
 NS_ASSUME_NONNULL_END

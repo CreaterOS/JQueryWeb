@@ -14,6 +14,10 @@
 #define JQUERY_BLOCK_STRONG __strong typeof(weakself) self = weakself;
 
 /* JavaScript标签文本内容 */
-#define JQUERY_JS_TAG(TAGNAME,COUNT,CONTEXT) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].innerText = '%@'",TAGNAME,COUNT,CONTEXT];
+#define JQUERY_JS_TAG_TEXT_VAL(TAGNAME,COUNT,CONTEXT) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].innerText = '%@';",TAGNAME,COUNT,CONTEXT];
+/* JavaScript标签文本HTML格式 */
+#define JQUERY_JS_TAG_HTML(TAGNAME,COUNT,CONTEXT) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].innerHTML = '%@';",TAGNAME,COUNT,CONTEXT];
+/* JavaScript标签ON操作 */
+#define JQUERY_JS_TAG_ON(TAGNAME,COUNT,OPTION,FUNCTION) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].on%@ = %@;",TAGNAME,COUNT,OPTION,FUNCTION];
 
 #endif /* JQueryWebMacroJavaScript_h */
