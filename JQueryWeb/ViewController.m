@@ -24,24 +24,27 @@
 //    NSString *str3 = JQueryWebMaker.JQuery(@"p").on(@"click",@"function(){ alert('asdf...'); };");
 //    NSString *str4 = JQueryWebMaker.JQuery(@"p").onWithIndex(3,@"click",@"function(){ alert('asdf...'); }");
     
-//    NSMutableArray *strArray1 = JQueryWebMaker.JQuery(@"p").onMoreOptionsWithIndex(5,@"function(){ alert('asdf...'); }",@"click",@"mousemove",@"mouseOut",nil);
+//    NSMutableArray *strArray1 = JQueryWebMaker.JQuery(@"p").onMoreOptionsWithIndex(5,@"function(){ alert('asdf...'); }",@"click",@"mousemove",@"mouseout",nil);
 //
-//    for (NSString *resStr in strArray) {
+//    for (NSString *resStr in strArray1) {
 //        NSLog(@"%@",resStr);
 //    }
     
-    NSMutableArray *strArray2 = JQueryWebMaker.JQuery(@"p").onMoreEventWithIndex(0,@"mouseover:function(){$('body').css('background-color','lightgray');}",@"mouseout:function(){$('body').css('background-color','lightblue');}",@"click:function(){$('body').css('background-color','yellow');",nil);
+//    NSMutableArray *strArray2 = JQueryWebMaker.JQuery(@"p").onMoreEventWithIndex(0,@"mouseover:function(){$('body').css('background-color','lightgray');}",@"mouseout:function(){$('body').css('background-color','lightblue');}",@"click:function(){$('body').css('background-color','yellow');",nil);
+//
+//    for (NSString *resStr in strArray2) {
+//        NSLog(@"%@",resStr);
+//    }
     
-    for (NSString *resStr in strArray2) {
-        NSLog(@"%@",resStr);
-    }
-    
-    [NSMutableArray arrayWithObjects:strArray2, nil];
+//    [NSMutableArray arrayWithObjects:strArray2, nil];
     
 //    NSLog(@"%@",str1);
 //    NSLog(@"%@",str2);
 //    NSLog(@"%@",str3);
 //    NSLog(@"%@",str4);
+    
+    NSString *str5 = JQueryWebMaker.JQuery(@"p").on(JQUERY_JS_CLICK,@"function(){$('body').css('background-color','lightblue');}");
+    NSLog(@"%@",str5);
 }
 
 

@@ -12,6 +12,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "JQueryWebONOptionsHeader.h"
 
 /* 枚举法设置标签操作种类 */
 typedef NS_ENUM(NSInteger, JQueryWebMakerStyle) {
@@ -43,6 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSMutableArray *(^)(NSUInteger,NSString *,...))onMoreOptionsWithIndex;
 /* 支持多个事件绑定不同函数 */
 - (NSMutableArray *(^)(NSUInteger,...))onMoreEventWithIndex;
+
 @end
 
 NS_ASSUME_NONNULL_END

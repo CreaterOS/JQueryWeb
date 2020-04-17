@@ -17,6 +17,9 @@
 @property (nonatomic,weak)NSString *option; /* on操作 */
 @property (nonatomic,weak)NSString *function; /* 函数封装 */
 @property (nonatomic,strong)NSMutableArray *resOnStrArray; /* 存储多个操作 */
+
+/* 整合JQuery on支持的所有操作 */
+@property (nonatomic,strong)NSMutableArray *onAllOptionsArray;
 @end
 
 
@@ -29,6 +32,15 @@
     }
     
     return _resOnStrArray;
+}
+
+/* 整合JQuery on操作数组 */
+- (NSMutableArray *)onAllOptionsArray{
+    if (!_onAllOptionsArray) {
+        _onAllOptionsArray = [NSMutableArray arrayWithObjects:JQUERY_JS_BLUR,JQUERY_JS_FOCUS,JQUERY_JS_FOCUSION,JQUERY_JS_FOCUSOUT,JQUERY_JS_LOAD,JQUERY_JS_RESIZE,JQUERY_JS_SCROLL,JQUERY_JS_UNLOAD,JQUERY_JS_CLICK,JQUERY_JS_DBLCLICK,JQUERY_JS_MOUSEDOWN,JQUERY_JS_MOUSEUP,JQUERY_JS_MOUSEMOVE,JQUERY_JS_MOUSEOVER,JQUERY_JS_MOUSEOUT,JQUERY_JS_MOUSEENTER,JQUERY_JS_MOUSELEAVE,JQUERY_JS_CHANGE,JQUERY_JS_SELECT,JQUERY_JS_SUBMIT,JQUERY_JS_KEYDOWN,JQUERY_JS_KEYPRESS,JQUERY_JS_KEYUP,JQUERY_JS_ERROR,JQUERY_JS_CONTEXTMENU,nil];
+    }
+    
+    return _onAllOptionsArray;
 }
 
 + (JQueryWebMaker * _Nonnull (^)(NSString * _Nonnull))JQuery{
@@ -246,6 +258,13 @@
     NSCParameterAssert(function != NULL);
     
     @synchronized (self) {
+        
+        if(![self onOptionsValidity:option]){
+            /* 抛出自定义异常 */
+            NSException *ex = [NSException exceptionWithName:@"无效on操作" reason:@"JQuery官方未定义此操作" userInfo:nil];
+            [ex raise];
+        }
+        
         _option = option;
         _function = function;
         
@@ -263,7 +282,14 @@
     NSCParameterAssert(option != NULL);
     NSCParameterAssert(function != NULL);
     
+    
     @synchronized (self) {
+        if(![self onOptionsValidity:option]){
+            /* 抛出自定义异常 */
+            NSException *ex = [NSException exceptionWithName:@"无效on操作" reason:@"JQuery官方未定义此操作" userInfo:nil];
+            [ex raise];
+        }
+        
         _option = option;
         _function = function;
         
@@ -276,7 +302,19 @@
     return [NSString string];
 }
 
-
+#pragma mark - 判断on操作有效性
+- (Boolean)onOptionsValidity:(NSString *)option{
+    NSCParameterAssert(option != NULL);
+    
+    /* 遍历数组判断是否包含 */
+    for (NSString *str in self.onAllOptionsArray) {
+        if ([str isEqualToString:option]) {
+            return TRUE;
+        }
+    }
+    
+    return FALSE;
+}
 
 #pragma mark - 解析标签
 - (NSString *__nonnull)parseTagName:(NSString *)tagName options:(NSString *(^)(void))option{
