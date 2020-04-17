@@ -13,6 +13,7 @@
 
 #import <Foundation/Foundation.h>
 #import "JQueryWebONOptionsHeader.h"
+#import "JQueryWebTagHeader.h"
 
 /* 枚举法设置标签操作种类 */
 typedef NS_ENUM(NSInteger, JQueryWebMakerStyle) {
@@ -44,6 +45,33 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSMutableArray *(^)(NSUInteger,NSString *,...))onMoreOptionsWithIndex;
 /* 支持多个事件绑定不同函数 */
 - (NSMutableArray *(^)(NSUInteger,...))onMoreEventWithIndex;
+
+/* on操作展开 */
+- (NSString *(^)(NSUInteger,NSString *))onBlur;
+- (NSString *(^)(NSUInteger,NSString *))onFocus;
+- (NSString *(^)(NSUInteger,NSString *))onFocusin;
+- (NSString *(^)(NSUInteger,NSString *))onFocusout;
+- (NSString *(^)(NSUInteger,NSString *))onLoad;
+- (NSString *(^)(NSUInteger,NSString *))onResize;
+- (NSString *(^)(NSUInteger,NSString *))onScroll;
+- (NSString *(^)(NSUInteger,NSString *))onUnload;
+- (NSString *(^)(NSUInteger,NSString *))onClick;
+- (NSString *(^)(NSUInteger,NSString *))onDblclick;
+- (NSString *(^)(NSUInteger,NSString *))onMousedown;
+- (NSString *(^)(NSUInteger,NSString *))onMouseup;
+- (NSString *(^)(NSUInteger,NSString *))onMousemove;
+- (NSString *(^)(NSUInteger,NSString *))onMouseover;
+- (NSString *(^)(NSUInteger,NSString *))onMouseout;
+- (NSString *(^)(NSUInteger,NSString *))onMouseenter;
+- (NSString *(^)(NSUInteger,NSString *))onMouseleave;
+- (NSString *(^)(NSUInteger,NSString *))onChange;
+- (NSString *(^)(NSUInteger,NSString *))onSelect;
+- (NSString *(^)(NSUInteger,NSString *))onSubmit;
+- (NSString *(^)(NSUInteger,NSString *))onKeydown;
+- (NSString *(^)(NSUInteger,NSString *))onKeypress;
+- (NSString *(^)(NSUInteger,NSString *))onKeyup;
+- (NSString *(^)(NSUInteger,NSString *))onError;
+- (NSString *(^)(NSUInteger,NSString *))onContextmenu;
 
 @end
 

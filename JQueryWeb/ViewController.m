@@ -43,8 +43,17 @@
 //    NSLog(@"%@",str3);
 //    NSLog(@"%@",str4);
     
-    NSString *str5 = JQueryWebMaker.JQuery(@"p").on(JQUERY_JS_CLICK,@"function(){$('body').css('background-color','lightblue');}");
-    NSLog(@"%@",str5);
+//    NSString *str5 = JQueryWebMaker.JQuery(@"p").on(JQUERY_JS_CLICK,@"function(){$('body').css('background-color','lightblue');}");
+//    NSLog(@"%@",str5);
+    
+//    NSString *str6 = JQueryWebMaker.JQuery(JQUERY_HTML_P).on(JQUERY_JS_CLICK,@"function(){$('body').css('background-color','lightblue');}");
+//    NSLog(@"%@",str6);
+    
+//    NSString *str7 = JQueryWebMaker.JQuery(JQUERY_HTML_P).onBlur(0,@"function(){$('body').css('background-color','lightblue');}");
+//    NSLog(@"%@",str7);
+    
+    NSString *str8 = JQueryWebMaker.JQuery(JQUERY_HTML_P).onMousemove(0,@"function(){$('body').css('background-color','lightblue');}");
+    NSLog(@"%@",str8);
 }
 
 

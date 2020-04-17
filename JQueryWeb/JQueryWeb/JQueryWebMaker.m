@@ -20,6 +20,8 @@
 
 /* 整合JQuery on支持的所有操作 */
 @property (nonatomic,strong)NSMutableArray *onAllOptionsArray;
+/* 整合HTML所有常用标签 */
+@property (nonatomic,strong)NSMutableArray *tagAllArray;
 @end
 
 
@@ -37,10 +39,19 @@
 /* 整合JQuery on操作数组 */
 - (NSMutableArray *)onAllOptionsArray{
     if (!_onAllOptionsArray) {
-        _onAllOptionsArray = [NSMutableArray arrayWithObjects:JQUERY_JS_BLUR,JQUERY_JS_FOCUS,JQUERY_JS_FOCUSION,JQUERY_JS_FOCUSOUT,JQUERY_JS_LOAD,JQUERY_JS_RESIZE,JQUERY_JS_SCROLL,JQUERY_JS_UNLOAD,JQUERY_JS_CLICK,JQUERY_JS_DBLCLICK,JQUERY_JS_MOUSEDOWN,JQUERY_JS_MOUSEUP,JQUERY_JS_MOUSEMOVE,JQUERY_JS_MOUSEOVER,JQUERY_JS_MOUSEOUT,JQUERY_JS_MOUSEENTER,JQUERY_JS_MOUSELEAVE,JQUERY_JS_CHANGE,JQUERY_JS_SELECT,JQUERY_JS_SUBMIT,JQUERY_JS_KEYDOWN,JQUERY_JS_KEYPRESS,JQUERY_JS_KEYUP,JQUERY_JS_ERROR,JQUERY_JS_CONTEXTMENU,nil];
+        _onAllOptionsArray = [NSMutableArray arrayWithObjects:ALLOPTIONS,nil];
     }
     
     return _onAllOptionsArray;
+}
+
+/* 整合HTML所有常用标签 */
+- (NSMutableArray *)tagAllArray{
+    if(!_tagAllArray){
+        _tagAllArray = [NSMutableArray arrayWithObjects:ALLTAG,nil];
+    }
+    
+    return _tagAllArray;
 }
 
 + (JQueryWebMaker * _Nonnull (^)(NSString * _Nonnull))JQuery{
@@ -55,10 +66,18 @@
     NSCParameterAssert(tagName != NULL);
     self = [super init];
     if (self) {
+        /* 此处需要判断标签的有效性 */
+        if(![self tagNameValidity:tagName]){
+            NSException *ex = [NSException exceptionWithName:@"HTML标签错误" reason:@"JQueryWeb - 核查标签参数" userInfo:nil];
+            [ex raise];
+        }
         _tagName = tagName;
     }
     return self;
 }
+
+
+
 
 #pragma mark - 文本操作
 - (NSString * _Nonnull (^)(NSString * _Nonnull))text{
@@ -234,7 +253,6 @@
             /* 取出参数的两部分 options 和 function */
             NSString *newOption = [eventStr componentsSeparatedByString:@":"][0];
             NSString *newFunction = [eventStr componentsSeparatedByString:@":"][1];
-            NSLog(@"%@ -- %@",newOption,newFunction);
             NSString *resStr = [self saveOnWithIndex:index option:newOption function:newFunction];
             [self.resOnStrArray addObject:resStr];
         }
@@ -261,7 +279,7 @@
         
         if(![self onOptionsValidity:option]){
             /* 抛出自定义异常 */
-            NSException *ex = [NSException exceptionWithName:@"无效on操作" reason:@"JQuery官方未定义此操作" userInfo:nil];
+            NSException *ex = [NSException exceptionWithName:@"无效on操作" reason:@"JQueryWeb - JQuery官方未定义此操作" userInfo:nil];
             [ex raise];
         }
         
@@ -286,7 +304,7 @@
     @synchronized (self) {
         if(![self onOptionsValidity:option]){
             /* 抛出自定义异常 */
-            NSException *ex = [NSException exceptionWithName:@"无效on操作" reason:@"JQuery官方未定义此操作" userInfo:nil];
+            NSException *ex = [NSException exceptionWithName:@"无效on操作" reason:@"JQueryWeb - JQuery官方未定义此操作" userInfo:nil];
             [ex raise];
         }
         
@@ -302,13 +320,262 @@
     return [NSString string];
 }
 
+#pragma mark - on展开操作
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onBlur{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onFocus{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onFocusin{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onFocusout{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onLoad{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onResize{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onScroll{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onUnload{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onClick{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onDblclick{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onMousedown{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onMouseup{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onMousemove{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onMouseover{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onMouseout{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onMouseenter{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onMouseleave{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onChange{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onSelect{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onSubmit{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onKeydown{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onKeypress{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onKeyup{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onError{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onContextmenu{
+    return ^NSString *(NSUInteger index,NSString *function){
+        NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
+        NSString *optionName = [self functionNameSubOption:functionName];
+        
+        return [self saveOnWithIndex:index option:optionName function:function];
+    };
+}
+
+#pragma mark - 函数名
+- (NSString *)functionNameSubOption:(NSString *__nonnull)functionName{
+    NSUInteger startIndex = [functionName rangeOfString:@"on"].location +2;
+    NSUInteger endIndex = [functionName rangeOfString:@"]"].location - startIndex;
+    return [functionName substringWithRange:NSMakeRange(startIndex, endIndex)];
+}
+
+#pragma mark - 有效性
 #pragma mark - 判断on操作有效性
 - (Boolean)onOptionsValidity:(NSString *)option{
     NSCParameterAssert(option != NULL);
+    /* 所有转换为小写 */
     
     /* 遍历数组判断是否包含 */
     for (NSString *str in self.onAllOptionsArray) {
-        if ([str isEqualToString:option]) {
+        if ([str isEqualToString:[option lowercaseString]]) {
+            return TRUE;
+        }
+    }
+    
+    return FALSE;
+}
+
+#pragma mark - tag有效性
+- (Boolean)tagNameValidity:(NSString *)tagName{
+    NSCParameterAssert(tagName != NULL);
+    
+    /* 遍历数组判断是否包含 */
+    for (NSString *str in self.tagAllArray) {
+        if ([str isEqualToString:[tagName lowercaseString]]) {
             return TRUE;
         }
     }

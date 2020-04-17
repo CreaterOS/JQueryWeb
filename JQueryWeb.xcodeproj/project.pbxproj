@@ -38,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		6866A84224494FB20049ED35 /* JQueryWebONOptionsHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JQueryWebONOptionsHeader.h; sourceTree = "<group>"; };
+		6866A843244954EA0049ED35 /* JQueryWebTagHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JQueryWebTagHeader.h; sourceTree = "<group>"; };
 		688FEC8924472ADE0086B2BA /* JQueryWeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JQueryWeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		688FEC8C24472ADE0086B2BA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		688FEC8D24472ADE0086B2BA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -146,6 +147,7 @@
 			children = (
 				688FECBF24472C090086B2BA /* JQueryWebMacroJavaScript.h */,
 				6866A84224494FB20049ED35 /* JQueryWebONOptionsHeader.h */,
+				6866A843244954EA0049ED35 /* JQueryWebTagHeader.h */,
 				688FECC024472FF50086B2BA /* JQueryWebTagMaker.h */,
 				688FECC124472FF50086B2BA /* JQueryWebTagMaker.m */,
 				688FECC3244731640086B2BA /* JQueryWebMaker.h */,
