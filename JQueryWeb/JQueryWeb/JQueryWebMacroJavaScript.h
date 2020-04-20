@@ -21,5 +21,9 @@
 #define JQUERY_JS_TAG_ON(TAGNAME,COUNT,OPTION,FUNCTION) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].on%@ = %@;",TAGNAME,COUNT,OPTION,FUNCTION];
 /* JavaScript标签CSS操作 */
 #define JQUERY_JS_TAG_CSS(TAGNAME,COUNT,KEY,VALUE) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].style.%@ = '%@';",TAGNAME,COUNT,KEY,VALUE];
+/* JavaScript标签SHOW操作 */
+#define JQUERY_JS_TAG_SHOW(TAGNAME,COUNT) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].show();",TAGNAME,COUNT];
+#define JQUERY_JS_TAG_SHOWF(TAGNAME,COUNT,ANIMATION,FUNCTION) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].show('%@') = %@;",TAGNAME,COUNT,ANIMATION,FUNCTION];
+#define JQUERY_JS_TAG_SHOWA(TAGNAME,COUNT,CONTEXT) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].show('%@');",TAGNAME,COUNT,CONTEXT];
 
 #endif /* JQueryWebMacroJavaScript_h */

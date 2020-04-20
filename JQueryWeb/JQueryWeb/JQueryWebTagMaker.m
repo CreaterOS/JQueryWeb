@@ -29,6 +29,19 @@ typedef NS_ENUM(NSUInteger,JQueryWebTagMakerIndex){
 
 @implementation JQueryWebTagMaker
 #pragma mark -- 实例化
++ (instancetype)TagMakerName:(NSString *)tagName{
+    return [[self alloc] initWithTagName:tagName];
+}
+
+- (instancetype)initWithTagName:(NSString *)tagName
+{
+    self = [super init];
+    if (self) {
+        _tagName = tagName;
+    }
+    return self;
+}
+
 + (instancetype)TagMakerName:(NSString *)tagName context:(NSString *)context{
     return [[self alloc] initWithTagName:tagName context:context];
 }
@@ -92,6 +105,13 @@ typedef NS_ENUM(NSUInteger,JQueryWebTagMakerIndex){
             
             return resStr;
         }
+    }else if (selectStr == JQueryWebMakerShow){
+        /* show操作 */
+        return JQUERY_JS_TAG_SHOW(_tagName, indexStr);
+    }else if (selectStr == JQueryWebMakerShowWithFunction){
+        return JQUERY_JS_TAG_SHOWF(_tagName, indexStr, _option, _function);
+    }else if (selectStr == JQueryWebMakerShowAnimation){
+        return JQUERY_JS_TAG_SHOWA(_tagName, indexStr, _context);
     }
     
     return [NSString string];
@@ -120,6 +140,13 @@ typedef NS_ENUM(NSUInteger,JQueryWebTagMakerIndex){
             
             return resStr;
         }
+    }else if (selectStr == JQueryWebMakerShow){
+        /* show操作 */
+        return JQUERY_JS_TAG_SHOW(_tagName, indexStr);
+    }else if (selectStr == JQueryWebMakerShowWithFunction){
+        return JQUERY_JS_TAG_SHOWF(_tagName, indexStr, _option, _function);
+    }else if (selectStr == JQueryWebMakerShowAnimation){
+        return JQUERY_JS_TAG_SHOWA(_tagName, indexStr, _context);
     }
     
     return [NSString string];

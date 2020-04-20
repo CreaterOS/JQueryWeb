@@ -22,6 +22,8 @@
 @property (nonatomic,strong)NSMutableArray *onAllOptionsArray;
 /* 整合HTML所有常用标签 */
 @property (nonatomic,strong)NSMutableArray *tagAllArray;
+/* show动画操作 */
+@property (nonatomic,strong)NSMutableArray *showAnimationArray;
 @end
 
 
@@ -53,6 +55,17 @@
     
     return _tagAllArray;
 }
+
+/* 整合JQuery动画效果 */
+- (NSMutableArray *)showAnimationArray{
+    if (!_showAnimationArray) {
+        /* animation -- "slow","normal", or "fast" */
+        _showAnimationArray = [NSMutableArray arrayWithObjects:@"slow",@"normal",@"fast",nil];
+    }
+    
+    return _showAnimationArray;
+}
+
 
 + (JQueryWebMaker * _Nonnull (^)(NSString * _Nonnull))JQuery{
     JQUERY_BLOCK_WEAK;
@@ -702,6 +715,129 @@
     return [tagM parseTextTagNameWithSelect:JQueryWebMakerCSS index:index];
 }
 
+#pragma mark - show操作
+- (NSString * _Nonnull (^)(void))show{
+    JQUERY_BLOCK_WEAK;
+    return ^NSString *(void){
+        JQUERY_BLOCK_STRONG;
+        return [self saveShow];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger))showWithIndex{
+    JQUERY_BLOCK_WEAK;
+    return ^NSString *(NSUInteger index){
+        JQUERY_BLOCK_STRONG;
+        return [self saveShowWithIndex:index];
+    };
+}
+
+#pragma mark - 保存show操作
+- (NSString *)saveShow{
+    JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName];
+    return [tag parseTextTagNameWithSelect:JQueryWebMakerShow];
+}
+
+- (NSString *)saveShowWithIndex:(NSUInteger)index{
+    JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName];
+    return [tag parseTextTagNameWithSelect:JQueryWebMakerShow index:index];
+}
+
+- (NSString * _Nonnull (^)(NSString * _Nonnull, NSString * _Nonnull))showSet{
+    JQUERY_BLOCK_WEAK;
+    return ^NSString *(NSString *option,NSString *function){
+        JQUERY_BLOCK_STRONG;
+        return [self saveShowWithOption:option function:function];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull, NSString * _Nonnull))showSetWithIndex{
+    JQUERY_BLOCK_WEAK;
+    return ^NSString *(NSUInteger index,NSString *option,NSString *function){
+        JQUERY_BLOCK_STRONG;
+        return [self saveShowWithIndex:index option:option function:function];
+    };
+}
+
+#pragma mark - 保存show带参数和函数
+- (NSString * __nonnull)saveShowWithOption:(NSString * __nonnull)option function:(NSString * __nonnull)function{
+    NSCParameterAssert(option != NULL);
+    NSCParameterAssert(function != NULL);
+    
+    @synchronized (self) {
+        
+        if(![self showAnimationValidity:option]){
+            /* 抛出自定义异常 */
+            NSException *ex = [NSException exceptionWithName:@"无效动画操作" reason:@"JQueryWeb - JQuery官方未定义此操作" userInfo:nil];
+            [ex raise];
+        }
+        
+        _option = option;
+        _function = function;
+        
+        return [self parseTagName:_tagName options:^NSString *{
+            JQueryWebTagMaker *tagMaker = [JQueryWebTagMaker TagMakerName:self.tagName option:self.option function:self.function];
+            return [tagMaker parseTextTagNameWithSelect:JQueryWebMakerShowWithFunction];
+        }];
+    }
+    
+    return [NSString string];
+}
+
+
+- (NSString * __nonnull)saveShowWithIndex:(NSUInteger)index option:(NSString * __nonnull)option function:(NSString * __nonnull)function{
+    NSCParameterAssert(option != NULL);
+    NSCParameterAssert(function != NULL);
+    
+    
+    @synchronized (self) {
+        if(![self showAnimationValidity:option]){
+            /* 抛出自定义异常 */
+            NSException *ex = [NSException exceptionWithName:@"无效动画效果操作" reason:@"JQueryWeb - JQuery官方未定义此操作" userInfo:nil];
+            [ex raise];
+        }
+        
+        _option = option;
+        _function = function;
+        
+        return [self parseTagName:_tagName options:^NSString *{
+            JQueryWebTagMaker *tagMaker = [JQueryWebTagMaker TagMakerName:self.tagName option:self.option function:self.function];
+            return [tagMaker parseTextTagNameWithSelect:JQueryWebMakerShowWithFunction index:index];
+        }];
+    }
+    
+    return [NSString string];
+}
+
+- (NSString * _Nonnull (^)(NSString * _Nonnull))showAnimation{
+    JQUERY_BLOCK_WEAK;
+    return ^NSString *(NSString *context) {
+        JQUERY_BLOCK_STRONG;
+        if(![self showAnimationValidity:context]){
+            /* 抛出自定义异常 */
+            NSException *ex = [NSException exceptionWithName:@"无效动画效果操作" reason:@"JQueryWeb - JQuery官方未定义此操作" userInfo:nil];
+            [ex raise];
+        }
+
+        return [self saveText:context select:JQueryWebMakerShowAnimation];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger,NSString * _Nonnull))showAnimationWithIndex{
+    JQUERY_BLOCK_WEAK;
+    return ^NSString *(NSUInteger index,NSString *context){
+        JQUERY_BLOCK_STRONG;
+        
+        if(![self showAnimationValidity:context]){
+            /* 抛出自定义异常 */
+            NSException *ex = [NSException exceptionWithName:@"无效动画效果操作" reason:@"JQueryWeb - JQuery官方未定义此操作" userInfo:nil];
+            [ex raise];
+        }
+
+        return [self saveText:context index:index select:JQueryWebMakerShowAnimation];
+    };
+}
+
 #pragma mark - 有效性
 #pragma mark - 判断语法有效性
 - (NSString *)cssPropertiesValidity:(NSString *__nonnull)properties{
@@ -722,6 +858,18 @@
     }
     
     return properties;
+}
+
+#pragma mark - 判断show操作有效性
+- (Boolean)showAnimationValidity:(NSString *)animation{
+    /* 判断动画类型 */
+    for (NSString *str in self.showAnimationArray) {
+        if ([animation isEqualToString:str]) {
+            return TRUE;
+        }
+    }
+    
+    return FALSE;
 }
 
 #pragma mark - 判断on操作有效性

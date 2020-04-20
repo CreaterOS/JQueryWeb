@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface JQueryWebTagMaker : JQueryWebMaker
 
 /* 实例化操作 */
++ (instancetype)TagMakerName:(NSString *)tagName;
 + (instancetype)TagMakerName:(NSString *)tagName context:(NSString *)context;
 + (instancetype)TagMakerName:(NSString *)tagName option:(NSString *)option function:(NSString *)function;
 + (instancetype)TagMakerName:(NSString *)tagName properties:(NSMutableDictionary *)dict;

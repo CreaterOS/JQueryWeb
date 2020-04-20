@@ -63,8 +63,18 @@
 //    NSString *str9 = JQueryWebMaker.JQuery(@"p").cssSet(@"color",@"blue");
 //    NSLog(@"%@",str9);
     
-    NSString *str10 = JQueryWebMaker.JQuery(@"p").cssSetWithIndex(2,@"color",@"blue");
-    NSLog(@"%@",str10);
+//    NSString *str10 = JQueryWebMaker.JQuery(@"p").cssSetWithIndex(2,@"color",@"blue");
+//    NSLog(@"%@",str10);
+//    NSString *str11 = JQueryWebMaker.JQuery(@"p").show();
+//    NSLog(@"%@",str11);
+    
+//    NSString *str12 = JQueryWebMaker.JQuery(@"p").showWithIndex(33);
+//    NSLog(@"%@",str12);
+//    NSString *str13 = JQueryWebMaker.JQuery(@"p").showSet(@"slow",@"funcation");
+//    NSLog(@"%@",str13);
+    NSString *str14 = JQueryWebMaker.JQuery(@"p").showAnimation(@"slow");
+    NSLog(@"%@",str14);
+    
 }
 
 
