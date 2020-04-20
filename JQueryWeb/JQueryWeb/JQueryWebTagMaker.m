@@ -24,12 +24,11 @@ typedef NS_ENUM(NSUInteger,JQueryWebTagMakerIndex){
 @property (nonatomic,weak,readonly)NSString *context; /* 文本内容 */
 @property (nonatomic,weak,readonly)NSString *option; /* on操作 */
 @property (nonatomic,weak,readonly)NSString *function; /* 函数封装 */
-
+@property (nonatomic,weak,readonly)NSMutableDictionary *cssproperties; /* css传入字典封装 */
 @end
 
 @implementation JQueryWebTagMaker
-
-#pragma mark -- 实力化
+#pragma mark -- 实例化
 + (instancetype)TagMakerName:(NSString *)tagName context:(NSString *)context{
     return [[self alloc] initWithTagName:tagName context:context];
 }
@@ -57,6 +56,19 @@ typedef NS_ENUM(NSUInteger,JQueryWebTagMakerIndex){
     return self;
 }
 
++ (instancetype)TagMakerName:(NSString *)tagName properties:(NSMutableDictionary *)dict{
+    return [[self alloc] initWithTagName:tagName properties:dict];
+}
+
+- (instancetype)initWithTagName:(NSString *)tagName properties:(NSMutableDictionary *)dict{
+    self = [super init];
+    if (self) {
+        _tagName = tagName;
+        _cssproperties = dict;
+    }
+    return self;
+}
+
 #pragma mark - 解析文本内容标签
 - (NSString * _Nonnull)parseTextTagNameWithSelect:(JQueryWebMakerStyle)selectStr{
     NSString *indexStr = [NSString stringWithFormat:@"%zd",JQueryWebTagMakerDefaultIndex];
@@ -68,6 +80,18 @@ typedef NS_ENUM(NSUInteger,JQueryWebTagMakerIndex){
         NSString *newOptionStr = [self humpStr:_option];
         NSString *newFunction = [self removeFunctionSemicolon:_function];
         return JQUERY_JS_TAG_ON(_tagName, indexStr, newOptionStr, newFunction);
+    }else if (selectStr == JQueryWebMakerCSS){
+        /* 从保存的数组中获得key和value */
+        @synchronized (self) {
+            NSMutableDictionary *tempDict = [_cssproperties copy];
+            NSString *resStr = [NSString string];
+            for (NSUInteger i = 0; i < [tempDict count]; i++) {
+                NSString *tempStr = JQUERY_JS_TAG_CSS(_tagName, indexStr, tempDict.allKeys[i], tempDict.allValues[i]);
+                resStr = [resStr stringByAppendingString:[tempStr stringByAppendingString:@"|"]];
+            }
+            
+            return resStr;
+        }
     }
     
     return [NSString string];
@@ -84,6 +108,18 @@ typedef NS_ENUM(NSUInteger,JQueryWebTagMakerIndex){
         NSString *newOptionStr = [self humpStr:_option];
         NSString *newFunction = [self removeFunctionSemicolon:_function];
         return JQUERY_JS_TAG_ON(_tagName, indexStr, newOptionStr, newFunction);
+    }else if (selectStr == JQueryWebMakerCSS){
+        /* 从保存的数组中获得key和value */
+        @synchronized (self) {
+            NSMutableDictionary *tempDict = [_cssproperties copy];
+            NSString *resStr = [NSString string];
+            for (NSUInteger i = 0; i < [tempDict count]; i++) {
+                NSString *tempStr = JQUERY_JS_TAG_CSS(_tagName, indexStr, tempDict.allKeys[i], tempDict.allValues[i]);
+                resStr = [resStr stringByAppendingString:[tempStr stringByAppendingString:@"|"]];
+            }
+            
+            return resStr;
+        }
     }
     
     return [NSString string];

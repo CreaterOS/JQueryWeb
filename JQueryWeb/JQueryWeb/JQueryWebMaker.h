@@ -19,7 +19,8 @@
 typedef NS_ENUM(NSInteger, JQueryWebMakerStyle) {
     JQueryWebMakerTextORVal, /* innerText */
     JQueryWebMakerHTML, /* innerHTML */
-    JQueryWebMakerON /* on */
+    JQueryWebMakerON, /* on */
+    JQueryWebMakerCSS /* css */
 };
 
 NS_ASSUME_NONNULL_BEGIN
@@ -73,6 +74,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *(^)(NSUInteger,NSString *))onError;
 - (NSString *(^)(NSUInteger,NSString *))onContextmenu;
 
+/* CSS properties操作 */
+- (NSMutableArray *(^)(NSString *))css;
+- (NSMutableArray *(^)(NSUInteger,NSString *))cssWithIndex;
+
+/* CSS */
+- (NSString *(^)(NSString *,NSString *))cssSet;
+- (NSString *(^)(NSUInteger,NSString *,NSString *))cssSetWithIndex;
 @end
 
 NS_ASSUME_NONNULL_END

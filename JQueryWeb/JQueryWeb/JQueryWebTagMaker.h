@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 /* 实例化操作 */
 + (instancetype)TagMakerName:(NSString *)tagName context:(NSString *)context;
 + (instancetype)TagMakerName:(NSString *)tagName option:(NSString *)option function:(NSString *)function;
++ (instancetype)TagMakerName:(NSString *)tagName properties:(NSMutableDictionary *)dict;
 
 /* 解析 */
 - (NSString * _Nonnull)parseTextTagNameWithSelect:(JQueryWebMakerStyle)selectStr;

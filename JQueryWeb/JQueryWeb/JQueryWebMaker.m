@@ -322,7 +322,9 @@
 
 #pragma mark - on展开操作
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onBlur{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
 
@@ -331,7 +333,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onFocus{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -340,7 +344,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onFocusin{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -349,7 +355,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onFocusout{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -358,7 +366,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onLoad{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -367,7 +377,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onResize{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -376,7 +388,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onScroll{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -385,7 +399,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onUnload{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -394,7 +410,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onClick{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -403,7 +421,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onDblclick{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -412,7 +432,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onMousedown{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -421,7 +443,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onMouseup{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -430,7 +454,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onMousemove{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -439,7 +465,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onMouseover{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -448,7 +476,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onMouseout{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -457,7 +487,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onMouseenter{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -466,7 +498,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onMouseleave{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -475,7 +509,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onChange{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -484,7 +520,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onSelect{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -493,7 +531,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onSubmit{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -502,7 +542,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onKeydown{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -511,7 +553,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onKeypress{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -520,7 +564,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onKeyup{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -529,7 +575,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onError{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -538,7 +586,9 @@
 }
 
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))onContextmenu{
+    JQUERY_BLOCK_WEAK;
     return ^NSString *(NSUInteger index,NSString *function){
+        JQUERY_BLOCK_STRONG;
         NSString *functionName = [NSString stringWithCString:__FUNCTION__ encoding:NSUTF8StringEncoding];
         NSString *optionName = [self functionNameSubOption:functionName];
         
@@ -553,7 +603,127 @@
     return [functionName substringWithRange:NSMakeRange(startIndex, endIndex)];
 }
 
+
+#pragma mark - css操作
+- (NSMutableArray * _Nonnull (^)(NSString * _Nonnull))css{
+    JQUERY_BLOCK_WEAK;
+    return ^NSMutableArray *(NSString *properties){
+        JQUERY_BLOCK_STRONG;
+        
+        NSString *cssStr = [self saveCSSWithProperties:properties];
+        NSMutableArray *resArr = [NSMutableArray array];
+        
+        for (NSString *resStr in [cssStr componentsSeparatedByString:@"|"]) {
+            [resArr addObject:resStr];
+        }
+        
+        return resArr;
+    };
+}
+
+- (NSMutableArray * _Nonnull (^)(NSUInteger, NSString * _Nonnull))cssWithIndex{
+    JQUERY_BLOCK_WEAK;
+    return ^NSMutableArray *(NSUInteger index,NSString *properties){
+        JQUERY_BLOCK_STRONG;
+        
+        NSString *cssStr = [self saveCSSWithIndex:index properties:properties];
+        NSMutableArray *resArr = [NSMutableArray array];
+        
+        for (NSString *resStr in [cssStr componentsSeparatedByString:@"|"]) {
+            [resArr addObject:resStr];
+        }
+        
+        return resArr;
+    };
+}
+
+#pragma mark - 基本css操作
+- (NSString * _Nonnull (^)(NSString * _Nonnull, NSString * _Nonnull))cssSet{
+    return ^NSString *(NSString *key,NSString *value){
+        /* 封装成为properties格式 */
+        NSString *properties = [NSString stringWithFormat:@"%@:%@",key,value];
+        NSString *resStr = [self saveCSSWithProperties:properties];
+        
+        return [resStr substringWithRange:NSMakeRange(0, resStr.length-1)];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull, NSString * _Nonnull))cssSetWithIndex{
+    return ^NSString *(NSUInteger index,NSString *key,NSString *value){
+        /* 封装成为properties格式 */
+        NSString *properties = [NSString stringWithFormat:@"%@:%@",key,value];
+        NSString *resStr = [self saveCSSWithIndex:index properties:properties];
+        
+        return [resStr substringWithRange:NSMakeRange(0, resStr.length-1)];
+    };
+
+}
+
+#pragma mark - 保存css操作
+- (NSString *)saveCSSWithProperties:(NSString *)properties{
+    /* 解析操作 */
+    NSCParameterAssert(properties != NULL);
+    
+    NSMutableDictionary *proDict = [NSMutableDictionary dictionary];
+    /* 字符串转字典操作 */
+    @synchronized (self) {
+        /* 判断语法有效性 */
+        properties = [self cssPropertiesValidity:properties];
+        NSArray *proArr = [properties componentsSeparatedByString:@","];
+        for (NSString *str in proArr) {
+            /* 取出key和value */
+            NSArray *keyAndValue = [str componentsSeparatedByString:@":"];
+            [proDict setValue:keyAndValue[1] forKey:keyAndValue[0]];
+        }
+    }
+    /* 保存到Tag字典中去 */
+    JQueryWebTagMaker *tagM = [JQueryWebTagMaker TagMakerName:_tagName properties:proDict];
+    return [tagM parseTextTagNameWithSelect:JQueryWebMakerCSS];
+}
+
+- (NSString *)saveCSSWithIndex:(NSUInteger) index properties:(NSString *)properties{
+    /* 解析操作 */
+    NSCParameterAssert(properties != NULL);
+    
+    NSMutableDictionary *proDict = [NSMutableDictionary dictionary];
+    /* 字符串转字典操作 */
+    @synchronized (self) {
+        /* 判断语法有效性 */
+        properties = [self cssPropertiesValidity:properties];
+        NSArray *proArr = [properties componentsSeparatedByString:@","];
+        for (NSString *str in proArr) {
+            /* 取出key和value */
+            NSArray *keyAndValue = [str componentsSeparatedByString:@":"];
+            [proDict setValue:keyAndValue[1] forKey:keyAndValue[0]];
+        }
+    }
+    /* 保存到Tag字典中去 */
+    JQueryWebTagMaker *tagM = [JQueryWebTagMaker TagMakerName:_tagName properties:proDict];
+    return [tagM parseTextTagNameWithSelect:JQueryWebMakerCSS index:index];
+}
+
 #pragma mark - 有效性
+#pragma mark - 判断语法有效性
+- (NSString *)cssPropertiesValidity:(NSString *__nonnull)properties{
+    NSCParameterAssert(properties != NULL);
+    
+    /* 判断是否含有{} */
+    if ([properties containsString:@"{"] && [properties containsString:@"}"]){
+        properties = [properties substringWithRange:NSMakeRange(1, properties.length-2)];
+    }else if (([properties containsString:@"{"] && ![properties containsString:@"}"]) || (![properties containsString:@"{"] && [properties containsString:@"}"])){
+        /* 语法上有错误 */
+        /* 发出警告，但是不崩溃程序 */
+        NSLog(@"输入中括号个数不匹配请及时修改！！！");
+        if ([properties containsString:@"{"]) {
+            properties = [properties substringWithRange:NSMakeRange(1, properties.length-1)];
+        }else{
+            properties = [properties substringWithRange:NSMakeRange(0, properties.length-1)];
+        }
+    }
+    
+    return properties;
+}
+
 #pragma mark - 判断on操作有效性
 - (Boolean)onOptionsValidity:(NSString *)option{
     NSCParameterAssert(option != NULL);

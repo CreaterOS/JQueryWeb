@@ -52,8 +52,19 @@
 //    NSString *str7 = JQueryWebMaker.JQuery(JQUERY_HTML_P).onBlur(0,@"function(){$('body').css('background-color','lightblue');}");
 //    NSLog(@"%@",str7);
     
-    NSString *str8 = JQueryWebMaker.JQuery(JQUERY_HTML_P).onMousemove(0,@"function(){$('body').css('background-color','lightblue');}");
-    NSLog(@"%@",str8);
+//    NSString *str8 = JQueryWebMaker.JQuery(JQUERY_HTML_P).onMousemove(0,@"function(){$('body').css('background-color','lightblue');}");
+//    NSLog(@"%@",str8);
+    
+//    NSMutableArray *cssArr = JQueryWebMaker.JQuery(@"p").css(@"{color:#ff0011,background:blue}");
+//
+//    for (NSString *resStr in cssArr) {
+//        NSLog(@"%@",resStr);
+//    }
+//    NSString *str9 = JQueryWebMaker.JQuery(@"p").cssSet(@"color",@"blue");
+//    NSLog(@"%@",str9);
+    
+    NSString *str10 = JQueryWebMaker.JQuery(@"p").cssSetWithIndex(2,@"color",@"blue");
+    NSLog(@"%@",str10);
 }
 
 
