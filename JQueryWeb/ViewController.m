@@ -72,9 +72,26 @@
 //    NSLog(@"%@",str12);
 //    NSString *str13 = JQueryWebMaker.JQuery(@"p").showSet(@"slow",@"funcation");
 //    NSLog(@"%@",str13);
-    NSString *str14 = JQueryWebMaker.JQuery(@"p").showAnimation(@"slow");
-    NSLog(@"%@",str14);
+//    NSString *str14 = JQueryWebMaker.JQuery(@"p").showAnimation(@"slow");
+//    NSLog(@"%@",str14);
+
+//    NSString *str15 = JQueryWebMaker.JQuery(@"p").hidden();
+//    NSLog(@"%@",str15);
     
+//    NSString *str16 = JQueryWebMaker.JQuery(@"p").hiddenWithIndex(421);
+//    NSLog(@"%@",str16);
+    
+//    NSString *str17 = JQueryWebMaker.JQuery(@"p").heightWithCount(3,500);
+//    NSLog(@"%@",str17);
+   
+//    NSString *str18 = JQueryWebMaker.JQuery(@"p").width(421);
+//    NSLog(@"%@",str18);
+
+//    NSString *str19 = JQueryWebMaker.JQuery(@"p").widthWithCount(3,500);
+//    NSLog(@"%@",str19);
+    
+    NSString *str20 = JQueryWebMaker.JQuery(@"p").trim(15,@" hello world... ");
+    NSLog(@"%@",str20);
 }
 
 

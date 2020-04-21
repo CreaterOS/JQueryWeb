@@ -25,6 +25,8 @@ typedef NS_ENUM(NSUInteger,JQueryWebTagMakerIndex){
 @property (nonatomic,weak,readonly)NSString *option; /* on操作 */
 @property (nonatomic,weak,readonly)NSString *function; /* 函数封装 */
 @property (nonatomic,weak,readonly)NSMutableDictionary *cssproperties; /* css传入字典封装 */
+@property (nonatomic,assign,readonly)NSUInteger height; //高度
+@property (nonatomic,assign,readonly)NSUInteger weight; //宽度
 @end
 
 @implementation JQueryWebTagMaker
@@ -82,6 +84,32 @@ typedef NS_ENUM(NSUInteger,JQueryWebTagMakerIndex){
     return self;
 }
 
++ (instancetype)TagMakerName:(NSString *)tagName height:(NSUInteger)height{
+    return [[self alloc] initWithTagName:tagName height:height];
+}
+
+- (instancetype)initWithTagName:(NSString *)tagName height:(NSUInteger)height{
+    self = [super init];
+    if (self) {
+        _tagName = tagName;
+        _height = height;
+    }
+    return self;
+}
+
++ (instancetype)TagMakerName:(NSString *)tagName width:(NSUInteger)width{
+    return [[self alloc] initWithTagName:tagName width:width];
+}
+
+- (instancetype)initWithTagName:(NSString *)tagName width:(NSUInteger)width{
+    self = [super init];
+    if (self) {
+        _tagName = tagName;
+        _weight = width;
+    }
+    return self;
+}
+
 #pragma mark - 解析文本内容标签
 - (NSString * _Nonnull)parseTextTagNameWithSelect:(JQueryWebMakerStyle)selectStr{
     NSString *indexStr = [NSString stringWithFormat:@"%zd",JQueryWebTagMakerDefaultIndex];
@@ -112,6 +140,12 @@ typedef NS_ENUM(NSUInteger,JQueryWebTagMakerIndex){
         return JQUERY_JS_TAG_SHOWF(_tagName, indexStr, _option, _function);
     }else if (selectStr == JQueryWebMakerShowAnimation){
         return JQUERY_JS_TAG_SHOWA(_tagName, indexStr, _context);
+    }else if (selectStr == JQueryWebMakerHidden){
+        return JQUERY_JS_TAG_HIDDEN(_tagName, indexStr);
+    }else if (selectStr == JQueryWebMakerHeight){
+        return JQUERY_JS_TAG_HEIGHT(_tagName, indexStr, _height);
+    }else if (selectStr == JQueryWebMakerWidth){
+        return JQUERY_JS_TAG_WIDTH(_tagName, indexStr, _weight);
     }
     
     return [NSString string];
@@ -147,6 +181,12 @@ typedef NS_ENUM(NSUInteger,JQueryWebTagMakerIndex){
         return JQUERY_JS_TAG_SHOWF(_tagName, indexStr, _option, _function);
     }else if (selectStr == JQueryWebMakerShowAnimation){
         return JQUERY_JS_TAG_SHOWA(_tagName, indexStr, _context);
+    }else if (selectStr == JQueryWebMakerHidden){
+        return JQUERY_JS_TAG_HIDDEN(_tagName, indexStr);
+    }else if (selectStr == JQueryWebMakerHeight){
+        return JQUERY_JS_TAG_HEIGHT(_tagName, indexStr, _height);
+    }else if (selectStr == JQueryWebMakerWidth){
+        return JQUERY_JS_TAG_WIDTH(_tagName, indexStr, _weight);
     }
     
     return [NSString string];

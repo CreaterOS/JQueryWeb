@@ -732,6 +732,17 @@
     };
 }
 
+#pragma mark - 保存hidden操作
+- (NSString *)saveHidden{
+    JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName];
+    return [tag parseTextTagNameWithSelect:JQueryWebMakerHidden];
+}
+
+- (NSString *)saveHiddenWithIndex:(NSUInteger)index{
+    JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName];
+    return [tag parseTextTagNameWithSelect:JQueryWebMakerHidden index:index];
+}
+
 #pragma mark - 保存show操作
 - (NSString *)saveShow{
     JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName];
@@ -836,6 +847,105 @@
 
         return [self saveText:context index:index select:JQueryWebMakerShowAnimation];
     };
+}
+
+#pragma mark - hidden操作
+- (NSString * _Nonnull (^)(void))hidden{
+    JQUERY_BLOCK_WEAK;
+    return ^NSString *(void){
+        JQUERY_BLOCK_STRONG;
+        return [self saveHidden];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger))hiddenWithIndex{
+    JQUERY_BLOCK_WEAK;
+    return ^NSString *(NSUInteger index){
+        JQUERY_BLOCK_STRONG;
+        return [self saveHiddenWithIndex:index];
+    };
+}
+
+#pragma mark - height操作
+- (NSString * _Nonnull (^)(NSUInteger))height{
+    JQUERY_BLOCK_WEAK;
+    return ^NSString *(NSUInteger heightPX){
+        JQUERY_BLOCK_STRONG;
+        return [self saveHeight:heightPX width:-1];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSUInteger))heightWithCount{
+    JQUERY_BLOCK_WEAK;
+    return ^NSString *(NSUInteger index,NSUInteger heightPX){
+        JQUERY_BLOCK_STRONG;
+        return [self saveHeight:heightPX width:-1 index:index];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger))width{
+    JQUERY_BLOCK_WEAK;
+    return ^NSString *(NSUInteger widthPX){
+        JQUERY_BLOCK_STRONG;
+        return [self saveHeight:widthPX width:-1];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSUInteger))widthWithCount{
+    JQUERY_BLOCK_WEAK;
+    return ^NSString *(NSUInteger index,NSUInteger widthPX){
+        JQUERY_BLOCK_STRONG;
+        return [self saveHeight:widthPX width:-1 index:index];
+    };
+}
+
+#pragma mark - 保存height操作和weight操作
+- (NSString *)saveHeight:(NSUInteger)height width:(NSUInteger)width{
+
+    if (height == -1 && width != -1) {
+        /* 保存宽度 */
+        JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName width:width];
+        return [tag parseTextTagNameWithSelect:JQueryWebMakerWidth];
+    }else if(height != -1 && width == -1){
+        /* 保存高度 */
+        JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName height:height];
+       return [tag parseTextTagNameWithSelect:JQueryWebMakerHeight];
+    }
+    
+    return [NSString string];
+}
+
+- (NSString *)saveHeight:(NSUInteger)height width:(NSUInteger)width index:(NSUInteger)index{
+    
+    if (height == -1 && width != -1) {
+        /* 保存宽度 */
+        JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName width:width];
+        return [tag parseTextTagNameWithSelect:JQueryWebMakerWidth index:index];
+    }else if(height != -1 && width == -1){
+        /* 保存高度 */
+        JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName height:height];
+        return [tag parseTextTagNameWithSelect:JQueryWebMakerHeight index:index];
+    }
+    
+    return [NSString string];
+}
+
+#pragma mark - trim操作
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))trim{
+    JQUERY_BLOCK_WEAK;
+    return ^NSString *(NSUInteger index,NSString *text){
+        JQUERY_BLOCK_STRONG;
+        return [self removeSpace:text index:index];
+    };
+}
+
+#pragma mark - 处理空格
+- (NSString *)removeSpace:(NSString *)trimText index:(NSUInteger)index{
+    
+    /* 去除空格 */
+    trimText = [trimText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    return [self saveText:trimText index:index select:JQueryWebMakerTextORVal];
 }
 
 #pragma mark - 有效性

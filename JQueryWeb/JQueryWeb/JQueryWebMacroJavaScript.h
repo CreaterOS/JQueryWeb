@@ -22,8 +22,13 @@
 /* JavaScript标签CSS操作 */
 #define JQUERY_JS_TAG_CSS(TAGNAME,COUNT,KEY,VALUE) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].style.%@ = '%@';",TAGNAME,COUNT,KEY,VALUE];
 /* JavaScript标签SHOW操作 */
-#define JQUERY_JS_TAG_SHOW(TAGNAME,COUNT) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].show();",TAGNAME,COUNT];
+#define JQUERY_JS_TAG_SHOW(TAGNAME,COUNT) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].show = true;",TAGNAME,COUNT];
 #define JQUERY_JS_TAG_SHOWF(TAGNAME,COUNT,ANIMATION,FUNCTION) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].show('%@') = %@;",TAGNAME,COUNT,ANIMATION,FUNCTION];
 #define JQUERY_JS_TAG_SHOWA(TAGNAME,COUNT,CONTEXT) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].show('%@');",TAGNAME,COUNT,CONTEXT];
-
+/* JavaScript标签Hidden操作 */
+#define JQUERY_JS_TAG_HIDDEN(TAGNAME,COUNT) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].hidden = true;",TAGNAME,COUNT];
+/* JavaScript标签Height操作 */
+#define JQUERY_JS_TAG_HEIGHT(TAGNAME,COUNT,HEIGHT) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].style.height = '%zdpx';",TAGNAME,COUNT,HEIGHT];
+/* JavaScript标签Width操作 */
+#define JQUERY_JS_TAG_WIDTH(TAGNAME,COUNT,WIDTH) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].style.width = '%zdpx';",TAGNAME,COUNT,WIDTH];
 #endif /* JQueryWebMacroJavaScript_h */

@@ -23,7 +23,10 @@ typedef NS_ENUM(NSInteger, JQueryWebMakerStyle) {
     JQueryWebMakerCSS, /* css */
     JQueryWebMakerShow, /* show */
     JQueryWebMakerShowWithFunction, /* show function */
-    JQueryWebMakerShowAnimation /* show animation */
+    JQueryWebMakerShowAnimation, /* show animation */
+    JQueryWebMakerHidden, /* hidden */
+    JQueryWebMakerHeight, /* height */
+    JQueryWebMakerWidth /* width */
 };
 
 NS_ASSUME_NONNULL_BEGIN
@@ -95,6 +98,20 @@ NS_ASSUME_NONNULL_BEGIN
 /* show带参数和函数 */
 - (NSString *(^)(NSString *,NSString *))showSet;
 - (NSString *(^)(NSUInteger,NSString *,NSString *))showSetWithIndex;
+
+/* hidden */
+- (NSString *(^)(void))hidden;
+- (NSString *(^)(NSUInteger))hiddenWithIndex;
+
+/* height */
+- (NSString *(^)(NSUInteger))height;
+- (NSString *(^)(NSUInteger,NSUInteger))heightWithCount;
+/* width */
+- (NSString *(^)(NSUInteger))width;
+- (NSString *(^)(NSUInteger,NSUInteger))widthWithCount;
+
+/* trim */
+- (NSString *(^)(NSUInteger,NSString *))trim;
 
 @end
 

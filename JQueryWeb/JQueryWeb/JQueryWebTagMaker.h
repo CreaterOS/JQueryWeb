@@ -21,7 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)TagMakerName:(NSString *)tagName context:(NSString *)context;
 + (instancetype)TagMakerName:(NSString *)tagName option:(NSString *)option function:(NSString *)function;
 + (instancetype)TagMakerName:(NSString *)tagName properties:(NSMutableDictionary *)dict;
-
++ (instancetype)TagMakerName:(NSString *)tagName height:(NSUInteger)height;
++ (instancetype)TagMakerName:(NSString *)tagName width:(NSUInteger)width;
 /* 解析 */
 - (NSString * _Nonnull)parseTextTagNameWithSelect:(JQueryWebMakerStyle)selectStr;
 
