@@ -26,7 +26,10 @@ typedef NS_ENUM(NSInteger, JQueryWebMakerStyle) {
     JQueryWebMakerShowAnimation, /* show animation */
     JQueryWebMakerHidden, /* hidden */
     JQueryWebMakerHeight, /* height */
-    JQueryWebMakerWidth /* width */
+    JQueryWebMakerWidth, /* width */
+    JQueryWebTagMakerAddClass, /* addClass */
+    JQueryWebTagMakerRemoveClass, /* removeClass */
+    JQueryWebTagMakerAttrValue /* attrValue */
 };
 
 NS_ASSUME_NONNULL_BEGIN
@@ -112,6 +115,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 /* trim */
 - (NSString *(^)(NSUInteger,NSString *))trim;
+
+/* addClass */
+- (NSString *(^)(NSUInteger,NSString *))addClass;
+
+/* removeClass */
+- (NSString *(^)(NSUInteger,NSString *))removeClass;
+
+/* attr */
+- (NSString *(^)(NSUInteger,NSString *,NSString *))attr;
+- (NSString *(^)(NSUInteger,NSString *,NSString *))attrFunction;
+- (NSMutableArray *(^)(NSUInteger,...))attrMore;
 
 @end
 

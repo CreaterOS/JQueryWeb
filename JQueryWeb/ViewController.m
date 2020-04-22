@@ -90,8 +90,25 @@
 //    NSString *str19 = JQueryWebMaker.JQuery(@"p").widthWithCount(3,500);
 //    NSLog(@"%@",str19);
     
-    NSString *str20 = JQueryWebMaker.JQuery(@"p").trim(15,@" hello world... ");
-    NSLog(@"%@",str20);
+//    NSString *str20 = JQueryWebMaker.JQuery(@"p").trim(15,@" hello world... ");
+//    NSLog(@"%@",str20);
+    
+//    NSString *str21 = JQueryWebMaker.JQuery(@"p").addClass(13,@"pClass");
+//    NSLog(@"%@",str21);
+    
+//    NSString *str22 = JQueryWebMaker.JQuery(@"p").removeClass(13,@"pClass");
+//    NSLog(@"%@",str22);
+    
+//    NSString *str23 = JQueryWebMaker.JQuery(@"p").attr(2,@"text",@"CreaterOS...");
+//    NSLog(@"%@",str23);
+    
+//    NSString *str24 = JQueryWebMaker.JQuery(@"p").attrFunction(2,@"text",@"function(){ alert('CreaterOS...'); }");
+//    NSLog(@"%@",str24);
+    
+    NSMutableArray *attrArray = JQueryWebMaker.JQuery(@"p").attrMore(5,@"name:CreaterOS",@"age:20",@"sex:boy",nil);
+    for (NSString *resStr in attrArray) {
+        NSLog(@"%@",resStr);
+    }
 }
 
 

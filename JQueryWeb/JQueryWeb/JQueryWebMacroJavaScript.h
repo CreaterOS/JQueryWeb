@@ -31,4 +31,12 @@
 #define JQUERY_JS_TAG_HEIGHT(TAGNAME,COUNT,HEIGHT) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].style.height = '%zdpx';",TAGNAME,COUNT,HEIGHT];
 /* JavaScript标签Width操作 */
 #define JQUERY_JS_TAG_WIDTH(TAGNAME,COUNT,WIDTH) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].style.width = '%zdpx';",TAGNAME,COUNT,WIDTH];
+/* JavaScript标签AddClass操作 */
+#define JQUERY_JS_TAG_ADDCLASS(TAGNAME,COUNT,CLASSNAME) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].classList.add('%@');",TAGNAME,COUNT,CLASSNAME];
+/* JavaScript标签RemoveClass操作 */
+#define JQUERY_JS_TAG_REMOVECLASS(TAGNAME,COUNT,CLASSNAME) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].classList.remove('%@');",TAGNAME,COUNT,CLASSNAME];
+/* JavaScript标签Attr操作 */
+#define JQUERY_JS_TAG_ATTRVALUE_FUNCTION(TAGNAME,COUNT,ATTRNAME,VALUE) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].setAttribute('%@','%@');",TAGNAME,COUNT,ATTRNAME,VALUE];
+
+
 #endif /* JQueryWebMacroJavaScript_h */

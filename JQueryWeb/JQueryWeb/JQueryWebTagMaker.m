@@ -187,6 +187,12 @@ typedef NS_ENUM(NSUInteger,JQueryWebTagMakerIndex){
         return JQUERY_JS_TAG_HEIGHT(_tagName, indexStr, _height);
     }else if (selectStr == JQueryWebMakerWidth){
         return JQUERY_JS_TAG_WIDTH(_tagName, indexStr, _weight);
+    }else if (selectStr == JQueryWebTagMakerAddClass){
+        return JQUERY_JS_TAG_ADDCLASS(_tagName, indexStr, _context);
+    }else if (selectStr == JQueryWebTagMakerRemoveClass){
+        return JQUERY_JS_TAG_REMOVECLASS(_tagName, indexStr, _context);
+    }else if (selectStr == JQueryWebTagMakerAttrValue){
+        return JQUERY_JS_TAG_ATTRVALUE_FUNCTION(_tagName, indexStr, _option, _function);
     }
     
     return [NSString string];

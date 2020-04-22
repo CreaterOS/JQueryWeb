@@ -939,6 +939,92 @@
     };
 }
 
+#pragma mark - addClass添加类名称
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))addClass{
+    JQUERY_BLOCK_WEAK;
+    return ^NSString *(NSUInteger index,NSString *className){
+        JQUERY_BLOCK_STRONG;
+        return [self saveClassName:className index:index selectName:JQueryWebTagMakerAddClass];
+    };
+}
+
+#pragma mark - removeClass删除类名称
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))removeClass{
+    JQUERY_BLOCK_WEAK;
+    return ^NSString *(NSUInteger index,NSString *className){
+        JQUERY_BLOCK_STRONG;
+        return [self saveClassName:className index:index selectName:JQueryWebTagMakerRemoveClass];
+    };
+}
+
+#pragma mark - 保存Class操作
+- (NSString *__nonnull)saveClassName:(NSString *)className index:(NSUInteger)index selectName:(JQueryWebMakerStyle)selectName{
+    NSCParameterAssert(className != NULL);
+    NSCParameterAssert(index >= 0);
+    
+    JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName context:className];
+    return [tag parseTextTagNameWithSelect:selectName index:index];
+}
+
+#pragma mark - attr操作
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull, NSString * _Nonnull))attr{
+    JQUERY_BLOCK_WEAK;
+    return ^NSString *(NSUInteger index,NSString *attrName,NSString *value){
+        JQUERY_BLOCK_STRONG;
+        return [self saveAttr:value index:index selectStr:JQueryWebTagMakerAttrValue attrName:attrName];
+    };
+}
+
+- (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull, NSString * _Nonnull))attrFunction{
+    JQUERY_BLOCK_WEAK;
+    return ^NSString *(NSUInteger index,NSString *attrName,NSString *value){
+        JQUERY_BLOCK_STRONG;
+        return [self saveAttr:value index:index selectStr:JQueryWebTagMakerAttrValue attrName:attrName];
+    };
+}
+
+- (NSMutableArray * _Nonnull (^)(NSUInteger, ...))attrMore{
+    JQUERY_BLOCK_WEAK;
+    return ^NSMutableArray *(NSUInteger index,...){
+        JQUERY_BLOCK_STRONG;
+        /* 可变参数 */
+        /* 封装字典 */
+        
+        NSString *options = [NSString string];
+        va_list arg_list;
+        
+        va_start(arg_list, index);
+        
+        while ((options = va_arg(arg_list, NSString *))) {
+            /* 处理后加入数组 */
+            /* 拆分 : 前后的值 */
+            NSString *attrName = [options componentsSeparatedByString:@":"][0];
+            NSString *value =  [options componentsSeparatedByString:@":"][1];
+            NSString *resStr = [self saveAttr:value index:index selectStr:JQueryWebTagMakerAttrValue attrName:attrName];
+            [self.resOnStrArray addObject:resStr];
+        }
+        va_end(arg_list);
+        
+        NSMutableArray *tempArray = [NSMutableArray array];
+        @synchronized (self) {
+            tempArray = [self.resOnStrArray copy];
+            /* 清空强引用数组 */
+            [self.resOnStrArray removeAllObjects];
+        }
+        
+        return tempArray;
+    };
+}
+
+#pragma mark - 保存attr操作
+- (NSString *)saveAttr:(NSString *)context index:(NSUInteger)index selectStr:(JQueryWebMakerStyle)selectStr attrName:(NSString *)attrName{
+    NSCParameterAssert(context != NULL);
+    NSCParameterAssert(index >= 0);
+    
+    JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName option:attrName function:context];
+    return [tag parseTextTagNameWithSelect:selectStr index:index];
+}
+
 #pragma mark - 处理空格
 - (NSString *)removeSpace:(NSString *)trimText index:(NSUInteger)index{
     
