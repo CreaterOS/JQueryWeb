@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6801F69E2451187B00D777EC /* JQueryWebIDMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6801F69D2451187B00D777EC /* JQueryWebIDMaker.m */; };
 		688FEC8E24472ADE0086B2BA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 688FEC8D24472ADE0086B2BA /* AppDelegate.m */; };
 		688FEC9124472ADE0086B2BA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 688FEC9024472ADE0086B2BA /* ViewController.m */; };
 		688FEC9424472ADE0086B2BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 688FEC9224472ADE0086B2BA /* Main.storyboard */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6801F69C2451187B00D777EC /* JQueryWebIDMaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JQueryWebIDMaker.h; sourceTree = "<group>"; };
+		6801F69D2451187B00D777EC /* JQueryWebIDMaker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JQueryWebIDMaker.m; sourceTree = "<group>"; };
 		6866A84224494FB20049ED35 /* JQueryWebONOptionsHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JQueryWebONOptionsHeader.h; sourceTree = "<group>"; };
 		6866A843244954EA0049ED35 /* JQueryWebTagHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JQueryWebTagHeader.h; sourceTree = "<group>"; };
 		688FEC8924472ADE0086B2BA /* JQueryWeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JQueryWeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +153,8 @@
 				6866A843244954EA0049ED35 /* JQueryWebTagHeader.h */,
 				688FECC024472FF50086B2BA /* JQueryWebTagMaker.h */,
 				688FECC124472FF50086B2BA /* JQueryWebTagMaker.m */,
+				6801F69C2451187B00D777EC /* JQueryWebIDMaker.h */,
+				6801F69D2451187B00D777EC /* JQueryWebIDMaker.m */,
 				688FECC3244731640086B2BA /* JQueryWebMaker.h */,
 				688FECC4244731640086B2BA /* JQueryWebMaker.m */,
 			);
@@ -289,6 +294,7 @@
 			files = (
 				688FEC9124472ADE0086B2BA /* ViewController.m in Sources */,
 				688FECC224472FF50086B2BA /* JQueryWebTagMaker.m in Sources */,
+				6801F69E2451187B00D777EC /* JQueryWebIDMaker.m in Sources */,
 				688FEC9C24472AE00086B2BA /* main.m in Sources */,
 				688FECC5244731640086B2BA /* JQueryWebMaker.m in Sources */,
 				688FEC8E24472ADE0086B2BA /* AppDelegate.m in Sources */,

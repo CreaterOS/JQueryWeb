@@ -9,9 +9,12 @@
 #import "JQueryWebMaker.h"
 #import "JQueryWebTagMaker.h"
 #import "JQueryWebMacroJavaScript.h"
+#import "JQueryWebIDMaker.h"
 
 @interface JQueryWebMaker()
 @property (nonatomic,weak)NSString *tagName; /* 标签名称 */
+@property (nonatomic,weak)NSString *idName; /* 标签名称 */
+@property (nonatomic,weak)NSString *className; /* 标签名称 */
 @property (nonatomic,weak)NSString *context; /* 文本内容 */
 @property (nonatomic,assign)NSUInteger index; /* 下标 */
 @property (nonatomic,weak)NSString *option; /* on操作 */
@@ -66,7 +69,7 @@
     return _showAnimationArray;
 }
 
-
+#pragma mark - JQuery标签
 + (JQueryWebMaker * _Nonnull (^)(NSString * _Nonnull))JQuery{
     JQUERY_BLOCK_WEAK;
     return ^JQueryWebMaker*(NSString *tagName){
@@ -89,8 +92,52 @@
     return self;
 }
 
+#pragma mark - JQuery ID
++ (JQueryWebMaker * _Nonnull (^)(NSString * _Nonnull))JQueryID{
+    JQUERY_BLOCK_WEAK;
+    return ^JQueryWebMaker*(NSString *idName){
+        JQUERY_BLOCK_STRONG;
+        return [[self alloc] initWithIDName:idName];
+    };
+}
 
+- (instancetype)initWithIDName:(NSString *)idName{
+    NSCParameterAssert(idName != NULL);
+    self = [super init];
+    if (self) {
+        /* 此处需要判断ID的有效性 */
+        if(![self idNameValidity:idName]){
+            NSException *ex = [NSException exceptionWithName:@"ID传入错误" reason:@"JQueryWeb - 核查ID参数" userInfo:nil];
+            [ex raise];
+        }
+        _idName = idName;
+    }
+    return self;
+}
 
+#pragma mark - JQuery Class
++ (JQueryWebMaker * _Nonnull (^)(NSString * _Nonnull))JQueryClass{
+    JQUERY_BLOCK_WEAK;
+    return ^JQueryWebMaker*(NSString *className){
+        JQUERY_BLOCK_STRONG;
+        return [[self alloc] initWithClassName:className];
+    };
+}
+
+- (instancetype)initWithClassName:(NSString *)className{
+    NSCParameterAssert(className != NULL);
+    
+    self = [super init];
+    if (self) {
+        /* 此处需要判断ID的有效性 */
+        if(![self classNameValidity:className]){
+            NSException *ex = [NSException exceptionWithName:@"Class传入错误" reason:@"JQueryWeb - 核查Class参数" userInfo:nil];
+            [ex raise];
+        }
+        _className = className;
+    }
+    return self;
+}
 
 #pragma mark - 文本操作
 - (NSString * _Nonnull (^)(NSString * _Nonnull))text{
@@ -139,37 +186,6 @@
         JQUERY_BLOCK_STRONG;
         return self.textWithIndex(index,context);
     };
-}
-
-#pragma mark - 保存文本信息
-- (NSString *__nonnull)saveText:(NSString *)context select:(JQueryWebMakerStyle)select{
-    NSCParameterAssert(context != NULL);
-    
-    @synchronized (self) {
-        _context = context;
-        /* 根据tagName进行选择对应的解析方法 */
-        return [self parseTagName:_tagName options:^NSString *{
-            
-                JQueryWebTagMaker *tagMaker = [JQueryWebTagMaker TagMakerName:self.tagName context:self.context];
-                return [tagMaker parseTextTagNameWithSelect:select];
-            
-        }];
-    }
-}
-
-- (NSString *__nonnull)saveText:(NSString *)context index:(NSUInteger)index select:(JQueryWebMakerStyle)select{
-    NSCParameterAssert(context != NULL);
-    
-    @synchronized (self) {
-        _context = context;
-        _index = index;
-        /* 根据tagName进行选择对应的解析方法 */
-        return [self parseTagName:_tagName options:^NSString *{
-            
-            JQueryWebTagMaker *tagMaker = [JQueryWebTagMaker TagMakerName:self.tagName context:self.context];
-            return [tagMaker parseTextTagNameWithSelect:select index:index];
-        }];
-    }
 }
 
 #pragma mark - ON操作
@@ -280,57 +296,6 @@
         
         return self.resOnStrArray;
     };
-}
-
-
-#pragma mark - 保存on操作信息
-- (NSString * __nonnull)saveOnWithOption:(NSString * __nonnull)option function:(NSString * __nonnull)function{
-    NSCParameterAssert(option != NULL);
-    NSCParameterAssert(function != NULL);
-    
-    @synchronized (self) {
-        
-        if(![self onOptionsValidity:option]){
-            /* 抛出自定义异常 */
-            NSException *ex = [NSException exceptionWithName:@"无效on操作" reason:@"JQueryWeb - JQuery官方未定义此操作" userInfo:nil];
-            [ex raise];
-        }
-        
-        _option = option;
-        _function = function;
-        
-        return [self parseTagName:_tagName options:^NSString *{
-            JQueryWebTagMaker *tagMaker = [JQueryWebTagMaker TagMakerName:self.tagName option:self.option function:self.function];
-            return [tagMaker parseTextTagNameWithSelect:JQueryWebMakerON];
-        }];
-    }
-    
-    return [NSString string];
-}
-
-
-- (NSString * __nonnull)saveOnWithIndex:(NSUInteger)index option:(NSString * __nonnull)option function:(NSString * __nonnull)function{
-    NSCParameterAssert(option != NULL);
-    NSCParameterAssert(function != NULL);
-    
-    
-    @synchronized (self) {
-        if(![self onOptionsValidity:option]){
-            /* 抛出自定义异常 */
-            NSException *ex = [NSException exceptionWithName:@"无效on操作" reason:@"JQueryWeb - JQuery官方未定义此操作" userInfo:nil];
-            [ex raise];
-        }
-        
-        _option = option;
-        _function = function;
-        
-        return [self parseTagName:_tagName options:^NSString *{
-            JQueryWebTagMaker *tagMaker = [JQueryWebTagMaker TagMakerName:self.tagName option:self.option function:self.function];
-            return [tagMaker parseTextTagNameWithSelect:JQueryWebMakerON index:index];
-        }];
-    }
-    
-    return [NSString string];
 }
 
 #pragma mark - on展开操作
@@ -672,49 +637,6 @@
 
 }
 
-#pragma mark - 保存css操作
-- (NSString *)saveCSSWithProperties:(NSString *)properties{
-    /* 解析操作 */
-    NSCParameterAssert(properties != NULL);
-    
-    NSMutableDictionary *proDict = [NSMutableDictionary dictionary];
-    /* 字符串转字典操作 */
-    @synchronized (self) {
-        /* 判断语法有效性 */
-        properties = [self cssPropertiesValidity:properties];
-        NSArray *proArr = [properties componentsSeparatedByString:@","];
-        for (NSString *str in proArr) {
-            /* 取出key和value */
-            NSArray *keyAndValue = [str componentsSeparatedByString:@":"];
-            [proDict setValue:keyAndValue[1] forKey:keyAndValue[0]];
-        }
-    }
-    /* 保存到Tag字典中去 */
-    JQueryWebTagMaker *tagM = [JQueryWebTagMaker TagMakerName:_tagName properties:proDict];
-    return [tagM parseTextTagNameWithSelect:JQueryWebMakerCSS];
-}
-
-- (NSString *)saveCSSWithIndex:(NSUInteger) index properties:(NSString *)properties{
-    /* 解析操作 */
-    NSCParameterAssert(properties != NULL);
-    
-    NSMutableDictionary *proDict = [NSMutableDictionary dictionary];
-    /* 字符串转字典操作 */
-    @synchronized (self) {
-        /* 判断语法有效性 */
-        properties = [self cssPropertiesValidity:properties];
-        NSArray *proArr = [properties componentsSeparatedByString:@","];
-        for (NSString *str in proArr) {
-            /* 取出key和value */
-            NSArray *keyAndValue = [str componentsSeparatedByString:@":"];
-            [proDict setValue:keyAndValue[1] forKey:keyAndValue[0]];
-        }
-    }
-    /* 保存到Tag字典中去 */
-    JQueryWebTagMaker *tagM = [JQueryWebTagMaker TagMakerName:_tagName properties:proDict];
-    return [tagM parseTextTagNameWithSelect:JQueryWebMakerCSS index:index];
-}
-
 #pragma mark - show操作
 - (NSString * _Nonnull (^)(void))show{
     JQUERY_BLOCK_WEAK;
@@ -732,28 +654,6 @@
     };
 }
 
-#pragma mark - 保存hidden操作
-- (NSString *)saveHidden{
-    JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName];
-    return [tag parseTextTagNameWithSelect:JQueryWebMakerHidden];
-}
-
-- (NSString *)saveHiddenWithIndex:(NSUInteger)index{
-    JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName];
-    return [tag parseTextTagNameWithSelect:JQueryWebMakerHidden index:index];
-}
-
-#pragma mark - 保存show操作
-- (NSString *)saveShow{
-    JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName];
-    return [tag parseTextTagNameWithSelect:JQueryWebMakerShow];
-}
-
-- (NSString *)saveShowWithIndex:(NSUInteger)index{
-    JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName];
-    return [tag parseTextTagNameWithSelect:JQueryWebMakerShow index:index];
-}
-
 - (NSString * _Nonnull (^)(NSString * _Nonnull, NSString * _Nonnull))showSet{
     JQUERY_BLOCK_WEAK;
     return ^NSString *(NSString *option,NSString *function){
@@ -768,56 +668,6 @@
         JQUERY_BLOCK_STRONG;
         return [self saveShowWithIndex:index option:option function:function];
     };
-}
-
-#pragma mark - 保存show带参数和函数
-- (NSString * __nonnull)saveShowWithOption:(NSString * __nonnull)option function:(NSString * __nonnull)function{
-    NSCParameterAssert(option != NULL);
-    NSCParameterAssert(function != NULL);
-    
-    @synchronized (self) {
-        
-        if(![self showAnimationValidity:option]){
-            /* 抛出自定义异常 */
-            NSException *ex = [NSException exceptionWithName:@"无效动画操作" reason:@"JQueryWeb - JQuery官方未定义此操作" userInfo:nil];
-            [ex raise];
-        }
-        
-        _option = option;
-        _function = function;
-        
-        return [self parseTagName:_tagName options:^NSString *{
-            JQueryWebTagMaker *tagMaker = [JQueryWebTagMaker TagMakerName:self.tagName option:self.option function:self.function];
-            return [tagMaker parseTextTagNameWithSelect:JQueryWebMakerShowWithFunction];
-        }];
-    }
-    
-    return [NSString string];
-}
-
-
-- (NSString * __nonnull)saveShowWithIndex:(NSUInteger)index option:(NSString * __nonnull)option function:(NSString * __nonnull)function{
-    NSCParameterAssert(option != NULL);
-    NSCParameterAssert(function != NULL);
-    
-    
-    @synchronized (self) {
-        if(![self showAnimationValidity:option]){
-            /* 抛出自定义异常 */
-            NSException *ex = [NSException exceptionWithName:@"无效动画效果操作" reason:@"JQueryWeb - JQuery官方未定义此操作" userInfo:nil];
-            [ex raise];
-        }
-        
-        _option = option;
-        _function = function;
-        
-        return [self parseTagName:_tagName options:^NSString *{
-            JQueryWebTagMaker *tagMaker = [JQueryWebTagMaker TagMakerName:self.tagName option:self.option function:self.function];
-            return [tagMaker parseTextTagNameWithSelect:JQueryWebMakerShowWithFunction index:index];
-        }];
-    }
-    
-    return [NSString string];
 }
 
 - (NSString * _Nonnull (^)(NSString * _Nonnull))showAnimation{
@@ -899,37 +749,6 @@
     };
 }
 
-#pragma mark - 保存height操作和weight操作
-- (NSString *)saveHeight:(NSUInteger)height width:(NSUInteger)width{
-
-    if (height == -1 && width != -1) {
-        /* 保存宽度 */
-        JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName width:width];
-        return [tag parseTextTagNameWithSelect:JQueryWebMakerWidth];
-    }else if(height != -1 && width == -1){
-        /* 保存高度 */
-        JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName height:height];
-       return [tag parseTextTagNameWithSelect:JQueryWebMakerHeight];
-    }
-    
-    return [NSString string];
-}
-
-- (NSString *)saveHeight:(NSUInteger)height width:(NSUInteger)width index:(NSUInteger)index{
-    
-    if (height == -1 && width != -1) {
-        /* 保存宽度 */
-        JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName width:width];
-        return [tag parseTextTagNameWithSelect:JQueryWebMakerWidth index:index];
-    }else if(height != -1 && width == -1){
-        /* 保存高度 */
-        JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName height:height];
-        return [tag parseTextTagNameWithSelect:JQueryWebMakerHeight index:index];
-    }
-    
-    return [NSString string];
-}
-
 #pragma mark - trim操作
 - (NSString * _Nonnull (^)(NSUInteger, NSString * _Nonnull))trim{
     JQUERY_BLOCK_WEAK;
@@ -955,15 +774,6 @@
         JQUERY_BLOCK_STRONG;
         return [self saveClassName:className index:index selectName:JQueryWebTagMakerRemoveClass];
     };
-}
-
-#pragma mark - 保存Class操作
-- (NSString *__nonnull)saveClassName:(NSString *)className index:(NSUInteger)index selectName:(JQueryWebMakerStyle)selectName{
-    NSCParameterAssert(className != NULL);
-    NSCParameterAssert(index >= 0);
-    
-    JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName context:className];
-    return [tag parseTextTagNameWithSelect:selectName index:index];
 }
 
 #pragma mark - attr操作
@@ -1014,15 +824,6 @@
         
         return tempArray;
     };
-}
-
-#pragma mark - 保存attr操作
-- (NSString *)saveAttr:(NSString *)context index:(NSUInteger)index selectStr:(JQueryWebMakerStyle)selectStr attrName:(NSString *)attrName{
-    NSCParameterAssert(context != NULL);
-    NSCParameterAssert(index >= 0);
-    
-    JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName option:attrName function:context];
-    return [tag parseTextTagNameWithSelect:selectStr index:index];
 }
 
 #pragma mark - 处理空格
@@ -1097,11 +898,398 @@
     return FALSE;
 }
 
+#pragma mark - id有效性
+- (Boolean)idNameValidity:(NSString *)idName{
+    NSCParameterAssert(idName != NULL);
+    
+    /* idName特性必须第一个字符含有#这个符号 */
+    return [[idName substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"#"];
+}
+
+#pragma mark - class有效性
+- (Boolean)classNameValidity:(NSString *)className{
+    NSCParameterAssert(className != NULL);
+    
+    /* className特性必须第一个字符含有.这个符号 */
+    return [[className substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"."];
+}
+
+
 #pragma mark - 解析标签
 - (NSString *__nonnull)parseTagName:(NSString *)tagName options:(NSString *(^)(void))option{
     NSCParameterAssert(tagName != NULL);
     
     return option();
+}
+
+#pragma mark - 保存操作
+#pragma mark - 保存文本信息
+- (NSString *__nonnull)saveText:(NSString *)context select:(JQueryWebMakerStyle)select{
+    NSCParameterAssert(context != NULL);
+    
+    @synchronized (self) {
+        _context = context;
+        /* 根据tagName进行选择对应的解析方法 */
+        if (_tagName != NULL) {
+            return [self parseTagName:_tagName options:^NSString *{
+                JQueryWebTagMaker *tagMaker = [JQueryWebTagMaker TagMakerName:self.tagName context:self.context];
+                return [tagMaker parseTextTagNameWithSelect:select];
+            }];
+        }else if (_idName != NULL){
+            JQueryWebIDMaker *idMaker = [JQueryWebIDMaker IDMakerName:self.idName context:self.context];
+            return [idMaker parseTextTagNameWithSelect:select];
+        }
+    }
+    
+    return [NSString string];
+}
+
+- (NSString *__nonnull)saveText:(NSString *)context index:(NSUInteger)index select:(JQueryWebMakerStyle)select{
+    NSCParameterAssert(context != NULL);
+    
+    @synchronized (self) {
+        _context = context;
+        _index = index;
+        
+        if (_tagName != NULL) {
+            /* 根据tagName进行选择对应的解析方法 */
+            return [self parseTagName:_tagName options:^NSString *{
+                
+                JQueryWebTagMaker *tagMaker = [JQueryWebTagMaker TagMakerName:self.tagName context:self.context];
+                return [tagMaker parseTextTagNameWithSelect:select index:index];
+            }];
+        }else if (_idName != NULL){
+            JQueryWebIDMaker *idMaker = [JQueryWebIDMaker IDMakerName:self.idName context:self.context];
+            return [idMaker parseTextTagNameWithSelect:select];
+        }
+    }
+    
+    
+    return [NSString string];
+}
+
+#pragma mark - 保存on操作信息
+- (NSString * __nonnull)saveOnWithOption:(NSString * __nonnull)option function:(NSString * __nonnull)function{
+    NSCParameterAssert(option != NULL);
+    NSCParameterAssert(function != NULL);
+    
+    @synchronized (self) {
+        
+        if(![self onOptionsValidity:option]){
+            /* 抛出自定义异常 */
+            NSException *ex = [NSException exceptionWithName:@"无效on操作" reason:@"JQueryWeb - JQuery官方未定义此操作" userInfo:nil];
+            [ex raise];
+        }
+        
+        _option = option;
+        _function = function;
+        
+        if (_tagName != NULL) {
+            return [self parseTagName:_tagName options:^NSString *{
+                JQueryWebTagMaker *tagMaker = [JQueryWebTagMaker TagMakerName:self.tagName option:self.option function:self.function];
+                return [tagMaker parseTextTagNameWithSelect:JQueryWebMakerON];
+            }];
+        }else if (_idName != NULL){
+            JQueryWebIDMaker *idMaker = [JQueryWebIDMaker IDMakerName:self.idName option:self.option function:self.function];
+            return [idMaker parseTextTagNameWithSelect:JQueryWebMakerON];
+        }
+    }
+    
+    return [NSString string];
+}
+
+
+- (NSString * __nonnull)saveOnWithIndex:(NSUInteger)index option:(NSString * __nonnull)option function:(NSString * __nonnull)function{
+    NSCParameterAssert(option != NULL);
+    NSCParameterAssert(function != NULL);
+    
+    
+    @synchronized (self) {
+        if(![self onOptionsValidity:option]){
+            /* 抛出自定义异常 */
+            NSException *ex = [NSException exceptionWithName:@"无效on操作" reason:@"JQueryWeb - JQuery官方未定义此操作" userInfo:nil];
+            [ex raise];
+        }
+        
+        _option = option;
+        _function = function;
+        if (_tagName != NULL) {
+            return [self parseTagName:_tagName options:^NSString *{
+                JQueryWebTagMaker *tagMaker = [JQueryWebTagMaker TagMakerName:self.tagName option:self.option function:self.function];
+                return [tagMaker parseTextTagNameWithSelect:JQueryWebMakerON index:index];
+            }];
+        }else if (_idName != NULL){
+            [self saveOnWithOption:option function:function];
+        }
+    }
+    
+    return [NSString string];
+}
+
+#pragma mark - 保存css操作
+- (NSString *)saveCSSWithProperties:(NSString *)properties{
+    /* 解析操作 */
+    NSCParameterAssert(properties != NULL);
+    
+    NSMutableDictionary *proDict = [NSMutableDictionary dictionary];
+    /* 字符串转字典操作 */
+    @synchronized (self) {
+        /* 判断语法有效性 */
+        properties = [self cssPropertiesValidity:properties];
+        NSArray *proArr = [properties componentsSeparatedByString:@","];
+        for (NSString *str in proArr) {
+            /* 取出key和value */
+            NSArray *keyAndValue = [str componentsSeparatedByString:@":"];
+            [proDict setValue:keyAndValue[1] forKey:keyAndValue[0]];
+        }
+    }
+    
+    
+    if (_tagName != NULL) {
+        return [self parseTagName:_tagName options:^NSString *{
+            /* 保存到Tag字典中去 */
+            JQueryWebTagMaker *tagM = [JQueryWebTagMaker TagMakerName:self.tagName properties:proDict];
+            return [tagM parseTextTagNameWithSelect:JQueryWebMakerCSS];
+        }];
+    }else if (_idName != NULL){
+            JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName properties:proDict];
+            return [idM parseTextTagNameWithSelect:JQueryWebMakerCSS];
+    }
+    
+    return [NSString string];
+}
+
+- (NSString *)saveCSSWithIndex:(NSUInteger)index properties:(NSString *)properties{
+    /* 解析操作 */
+    NSCParameterAssert(properties != NULL);
+    
+    NSMutableDictionary *proDict = [NSMutableDictionary dictionary];
+    /* 字符串转字典操作 */
+    @synchronized (self) {
+        /* 判断语法有效性 */
+        properties = [self cssPropertiesValidity:properties];
+        NSArray *proArr = [properties componentsSeparatedByString:@","];
+        for (NSString *str in proArr) {
+            /* 取出key和value */
+            NSArray *keyAndValue = [str componentsSeparatedByString:@":"];
+            [proDict setValue:keyAndValue[1] forKey:keyAndValue[0]];
+        }
+    }
+    
+    if(_tagName != NULL){
+        return [self parseTagName:_tagName options:^NSString *{
+            /* 保存到Tag字典中去 */
+            JQueryWebTagMaker *tagM = [JQueryWebTagMaker TagMakerName:self.tagName properties:proDict];
+            return [tagM parseTextTagNameWithSelect:JQueryWebMakerCSS index:index];
+        }];
+    }else if (_idName != NULL){
+        [self saveCSSWithProperties:properties];
+    }
+    
+    return [NSString string];
+}
+
+#pragma mark - 保存hidden操作
+- (NSString *)saveHidden{
+    if(_tagName != NULL){
+        return [self parseTagName:_tagName options:^NSString *{
+            JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:self.tagName];
+            return [tag parseTextTagNameWithSelect:JQueryWebMakerHidden];
+        }];
+    }else if (_idName != NULL){
+        JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName];
+        return [idM parseTextTagNameWithSelect:JQueryWebMakerHidden];
+    }
+    
+    return [NSString string];
+}
+
+- (NSString *)saveHiddenWithIndex:(NSUInteger)index{
+    if(_tagName != NULL){
+        return [self parseTagName:_tagName options:^NSString *{
+            JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:self.tagName];
+            return [tag parseTextTagNameWithSelect:JQueryWebMakerHidden index:index];
+        }];
+    }else if(_idName != NULL){
+        [self saveHidden];
+    }
+    
+    return [NSString string];
+}
+
+#pragma mark - 保存show操作
+- (NSString *)saveShow{
+    if(_tagName != NULL){
+        return [self parseTagName:_tagName options:^NSString *{
+            JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:self.tagName];
+            return [tag parseTextTagNameWithSelect:JQueryWebMakerShow];
+        }];
+    }else if(_idName != NULL){
+        JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName];
+        return [idM parseTextTagNameWithSelect:JQueryWebMakerShow];
+    }
+            
+    return [NSString string];
+}
+
+- (NSString *)saveShowWithIndex:(NSUInteger)index{
+    
+    if(_tagName != NULL){
+        return [self parseTagName:_tagName options:^NSString *{
+            JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:self.tagName];
+            return [tag parseTextTagNameWithSelect:JQueryWebMakerShow index:index];
+        }];
+    }else if(_idName != NULL){
+        [self saveShow];
+    }
+    
+    return [NSString string];
+}
+
+#pragma mark - 保存show带参数和函数
+- (NSString * __nonnull)saveShowWithOption:(NSString * __nonnull)option function:(NSString * __nonnull)function{
+    NSCParameterAssert(option != NULL);
+    NSCParameterAssert(function != NULL);
+    
+    @synchronized (self) {
+        
+        if(![self showAnimationValidity:option]){
+            /* 抛出自定义异常 */
+            NSException *ex = [NSException exceptionWithName:@"无效动画操作" reason:@"JQueryWeb - JQuery官方未定义此操作" userInfo:nil];
+            [ex raise];
+        }
+        
+        _option = option;
+        _function = function;
+        
+        if (_tagName != NULL) {
+            return [self parseTagName:_tagName options:^NSString *{
+                JQueryWebTagMaker *tagMaker = [JQueryWebTagMaker TagMakerName:self.tagName option:self.option function:self.function];
+                return [tagMaker parseTextTagNameWithSelect:JQueryWebMakerShowWithFunction];
+            }];
+        }else if(_idName != NULL){
+            JQueryWebIDMaker *idMaker = [JQueryWebIDMaker IDMakerName:self.idName option:self.option function:self.function];
+            return [idMaker parseTextTagNameWithSelect:JQueryWebMakerShowWithFunction];
+        }
+       
+    }
+    
+    return [NSString string];
+}
+
+
+- (NSString * __nonnull)saveShowWithIndex:(NSUInteger)index option:(NSString * __nonnull)option function:(NSString * __nonnull)function{
+    NSCParameterAssert(option != NULL);
+    NSCParameterAssert(function != NULL);
+    
+    
+    @synchronized (self) {
+        if(![self showAnimationValidity:option]){
+            /* 抛出自定义异常 */
+            NSException *ex = [NSException exceptionWithName:@"无效动画效果操作" reason:@"JQueryWeb - JQuery官方未定义此操作" userInfo:nil];
+            [ex raise];
+        }
+        
+        _option = option;
+        _function = function;
+        
+        if (_tagName != NULL) {
+            return [self parseTagName:_tagName options:^NSString *{
+                JQueryWebTagMaker *tagMaker = [JQueryWebTagMaker TagMakerName:self.tagName option:self.option function:self.function];
+                return [tagMaker parseTextTagNameWithSelect:JQueryWebMakerShowWithFunction index:index];
+            }];
+        }else if (_idName != NULL){
+            [self saveShowWithOption:option function:function];
+        }
+    }
+    
+    return [NSString string];
+}
+
+#pragma mark - 保存height操作和weight操作
+- (NSString *)saveHeight:(NSUInteger)height width:(NSUInteger)width{
+    
+    if (height == -1 && width != -1) {
+        /* 保存宽度 */
+        if (_tagName != NULL) {
+            return [self parseTagName:_tagName options:^NSString *{
+                JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:self.tagName width:width];
+                return [tag parseTextTagNameWithSelect:JQueryWebMakerWidth];
+            }];
+        }else if (_idName != NULL){
+            JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName width:width];
+            return [idM parseTextTagNameWithSelect:JQueryWebMakerWidth];
+        }
+        
+    }else if(height != -1 && width == -1){
+        if (_tagName != NULL) {
+            return [self parseTagName:_tagName options:^NSString *{
+                /* 保存高度 */
+                JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:self.tagName height:height];
+                return [tag parseTextTagNameWithSelect:JQueryWebMakerHeight];
+            }];
+        }else if (_idName != NULL){
+            JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName height:height];
+            return [idM parseTextTagNameWithSelect:JQueryWebMakerHeight];
+        }
+    }
+    
+    return [NSString string];
+}
+
+- (NSString *)saveHeight:(NSUInteger)height width:(NSUInteger)width index:(NSUInteger)index{
+    
+    if (_idName != NULL) {
+        [self saveHeight:height width:width];
+    }else if(_tagName != NULL){
+        if (height == -1 && width != -1) {
+            /* 保存宽度 */
+            JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName width:width];
+            return [tag parseTextTagNameWithSelect:JQueryWebMakerWidth index:index];
+        }else if(height != -1 && width == -1){
+            /* 保存高度 */
+            JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName height:height];
+            return [tag parseTextTagNameWithSelect:JQueryWebMakerHeight index:index];
+        }
+    }
+    
+    return [NSString string];
+}
+
+#pragma mark - 保存Class操作
+- (NSString *__nonnull)saveClassName:(NSString *)className index:(NSUInteger)index selectName:(JQueryWebMakerStyle)selectName{
+    NSCParameterAssert(className != NULL);
+    NSCParameterAssert(index >= 0);
+    
+    if (_tagName != NULL) {
+        return [self parseTagName:_tagName options:^NSString *{
+            JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:self.tagName context:className];
+            return [tag parseTextTagNameWithSelect:selectName index:index];
+        }];
+    }else if (_idName != NULL){
+        JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName context:className];
+        return [idM parseTextTagNameWithSelect:selectName];
+    }
+    
+    return [NSString string];
+}
+
+#pragma mark - 保存attr操作
+- (NSString *)saveAttr:(NSString *)context index:(NSUInteger)index selectStr:(JQueryWebMakerStyle)selectStr attrName:(NSString *)attrName{
+    NSCParameterAssert(context != NULL);
+    NSCParameterAssert(index >= 0);
+    
+    if (_tagName != NULL) {
+        return [self parseTagName:_tagName options:^NSString *{
+            JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:self.tagName option:attrName function:context];
+            return [tag parseTextTagNameWithSelect:selectStr index:index];
+        }];
+    }else if (_idName != NULL){
+        JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName option:attrName function:context];
+        return [idM parseTextTagNameWithSelect:selectStr];
+    }
+    
+    return [NSString string];
 }
 
 @end

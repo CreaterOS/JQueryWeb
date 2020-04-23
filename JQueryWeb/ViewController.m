@@ -20,9 +20,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 //    NSString *str1 = JQueryWebMaker.JQuery(@"p").html(@"我是JQuery...");
+//    NSString *strs1 = JQueryWebMaker.JQueryID(@"#p").html(@"我是JQuery...");
+//    NSLog(@"%@\n%@",str1,strs1);
+    
 //    NSString *str2 = JQueryWebMaker.JQuery(@"p").htmlWithIndex(2,@"asf..");
+//    NSString *strs2 = JQueryWebMaker.JQueryID(@"#p").htmlWithIndex(0,@"asf..");
+//    NSLog(@"%@\n%@",str2,strs2);
+    
 //    NSString *str3 = JQueryWebMaker.JQuery(@"p").on(@"click",@"function(){ alert('asdf...'); };");
+//    NSString *strs3 = JQueryWebMaker.JQueryID(@"#p").on(@"click",@"function(){ alert('asdf...'); };");
+//    NSLog(@"%@\n%@",str3,strs3);
+    
 //    NSString *str4 = JQueryWebMaker.JQuery(@"p").onWithIndex(3,@"click",@"function(){ alert('asdf...'); }");
+//    NSString *strs4 = JQueryWebMaker.JQueryID(@"#p").on(@"click",@"function(){ alert('asdf...'); }");
+//    NSLog(@"%@\n%@",str4,strs4);
     
 //    NSMutableArray *strArray1 = JQueryWebMaker.JQuery(@"p").onMoreOptionsWithIndex(5,@"function(){ alert('asdf...'); }",@"click",@"mousemove",@"mouseout",nil);
 //
@@ -105,10 +116,31 @@
 //    NSString *str24 = JQueryWebMaker.JQuery(@"p").attrFunction(2,@"text",@"function(){ alert('CreaterOS...'); }");
 //    NSLog(@"%@",str24);
     
-    NSMutableArray *attrArray = JQueryWebMaker.JQuery(@"p").attrMore(5,@"name:CreaterOS",@"age:20",@"sex:boy",nil);
-    for (NSString *resStr in attrArray) {
-        NSLog(@"%@",resStr);
-    }
+//    NSMutableArray *attrArray = JQueryWebMaker.JQuery(@"p").attrMore(5,@"name:CreaterOS",@"age:20",@"sex:boy",nil);
+//    for (NSString *resStr in attrArray) {
+//        NSLog(@"%@",resStr);
+//    }
+    
+//    NSLog(@"-----------------------------------------");
+//    NSMutableArray *attrArray1 = JQueryWebMaker.JQueryID(@"#pID").attrMore(0,@"name:CreaterOS",@"age:20",@"sex:boy",nil);
+//        for (NSString *resStr in attrArray1) {
+//            NSLog(@"%@",resStr);
+//        }
+//
+//    NSLog(@"-----------------------------------------");
+//
+//    NSMutableArray *attrArray2 = JQueryWebMaker.JQuery(@"p").attrMore(2,@"name:CreaterOS",@"age:20",@"sex:boy",nil);
+//    for (NSString *resStr in attrArray2) {
+//        NSLog(@"%@",resStr);
+//    }
+//
+//    NSLog(@"-----------------------------------------");
+//
+//    NSMutableArray *attrArray3 = JQueryWebMaker.JQueryID(@"#pDD").attrMore(0,@"name:CreaterOS",@"age:20",@"sex:boy",nil);
+//    for (NSString *resStr in attrArray3) {
+//        NSLog(@"%@",resStr);
+//    }
+
 }
 
 

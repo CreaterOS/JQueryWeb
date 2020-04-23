@@ -13,6 +13,7 @@
 #define JQUERY_BLOCK_WEAK __weak typeof(self) weakself = self;
 #define JQUERY_BLOCK_STRONG __strong typeof(weakself) self = weakself;
 
+/* ----------------------------- TAGNAME -----------------------------*/
 /* JavaScript标签文本内容 */
 #define JQUERY_JS_TAG_TEXT_VAL(TAGNAME,COUNT,CONTEXT) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].innerText = '%@';",TAGNAME,COUNT,CONTEXT];
 /* JavaScript标签文本HTML格式 */
@@ -38,5 +39,31 @@
 /* JavaScript标签Attr操作 */
 #define JQUERY_JS_TAG_ATTRVALUE_FUNCTION(TAGNAME,COUNT,ATTRNAME,VALUE) [NSString stringWithFormat:@"document.getElementsByTagName('%@')[%@].setAttribute('%@','%@');",TAGNAME,COUNT,ATTRNAME,VALUE];
 
+/* ----------------------------- IDNAME -----------------------------*/
+
+/* JavaScript标签文本内容 */
+#define JQUERY_JS_ID_TEXT_VAL(TAGNAME,CONTEXT) [NSString stringWithFormat:@"document.getElementById('%@').innerText = '%@';",TAGNAME,CONTEXT];
+/* JavaScript标签文本HTML格式 */
+#define JQUERY_JS_ID_HTML(TAGNAME,CONTEXT) [NSString stringWithFormat:@"document.getElementById('%@').innerHTML = '%@';",TAGNAME,CONTEXT];
+/* JavaScript标签ON操作 */
+#define JQUERY_JS_ID_ON(TAGNAME,OPTION,FUNCTION) [NSString stringWithFormat:@"document.getElementById('%@').on%@ = %@;",TAGNAME,OPTION,FUNCTION];
+/* JavaScript标签CSS操作 */
+#define JQUERY_JS_ID_CSS(TAGNAME,KEY,VALUE) [NSString stringWithFormat:@"document.getElementById('%@').style.%@ = '%@';",TAGNAME,KEY,VALUE];
+/* JavaScript标签SHOW操作 */
+#define JQUERY_JS_ID_SHOW(TAGNAME) [NSString stringWithFormat:@"document.getElementById('%@').show = true;",TAGNAME];
+#define JQUERY_JS_ID_SHOWF(TAGNAME,ANIMATION,FUNCTION) [NSString stringWithFormat:@"document.getElementById('%@').show('%@') = %@;",TAGNAME,ANIMATION,FUNCTION];
+#define JQUERY_JS_ID_SHOWA(TAGNAME,CONTEXT) [NSString stringWithFormat:@"document.getElementById('%@').show('%@');",TAGNAME,CONTEXT];
+/* JavaScript标签Hidden操作 */
+#define JQUERY_JS_ID_HIDDEN(TAGNAME) [NSString stringWithFormat:@"document.getElementById('%@').hidden = true;",TAGNAME];
+/* JavaScript标签Height操作 */
+#define JQUERY_JS_ID_HEIGHT(TAGNAME,HEIGHT) [NSString stringWithFormat:@"document.getElementById('%@').style.height = '%zdpx';",TAGNAME,HEIGHT];
+/* JavaScript标签Width操作 */
+#define JQUERY_JS_ID_WIDTH(TAGNAME,WIDTH) [NSString stringWithFormat:@"document.getElementById('%@').style.width = '%zdpx';",TAGNAME,WIDTH];
+/* JavaScript标签AddClass操作 */
+#define JQUERY_JS_ID_ADDCLASS(TAGNAME,CLASSNAME) [NSString stringWithFormat:@"document.getElementById('%@').classList.add('%@');",TAGNAME,CLASSNAME];
+/* JavaScript标签RemoveClass操作 */
+#define JQUERY_JS_ID_REMOVECLASS(TAGNAME,CLASSNAME) [NSString stringWithFormat:@"document.getElementById('%@').classList.remove('%@');",TAGNAME,CLASSNAME];
+/* JavaScript标签Attr操作 */
+#define JQUERY_JS_ID_ATTRVALUE_FUNCTION(TAGNAME,ATTRNAME,VALUE) [NSString stringWithFormat:@"document.getElementById('%@').setAttribute('%@','%@');",TAGNAME,ATTRNAME,VALUE];
 
 #endif /* JQueryWebMacroJavaScript_h */

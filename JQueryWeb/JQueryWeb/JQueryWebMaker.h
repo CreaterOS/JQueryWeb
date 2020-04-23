@@ -38,6 +38,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /* JQuery实现标签处理 */
 + (JQueryWebMaker *(^)(NSString *))JQuery;
+/* JQuery实现ID处理 */
++ (JQueryWebMaker *(^)(NSString *))JQueryID;
+/* JQuery实现Class处理 */
++ (JQueryWebMaker *(^)(NSString *))JQueryClass;
 
 /* 文本操作 */
 - (NSString *(^)(NSString *))text;
