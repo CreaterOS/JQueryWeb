@@ -140,6 +140,12 @@
 //    for (NSString *resStr in attrArray3) {
 //        NSLog(@"%@",resStr);
 //    }
+    
+    
+    NSMutableArray *attrArray4 = JQueryWebMaker.JQueryClass(@".pClass").attrMore(15,@"name:CreaterOS",@"age:20",@"sex:boy",nil);
+    for (NSString *resStr in attrArray4) {
+        NSLog(@"%@",resStr);
+    }
 
 }
 

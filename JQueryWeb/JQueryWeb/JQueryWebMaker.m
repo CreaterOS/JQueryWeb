@@ -10,6 +10,7 @@
 #import "JQueryWebTagMaker.h"
 #import "JQueryWebMacroJavaScript.h"
 #import "JQueryWebIDMaker.h"
+#import "JQueryWebClassMaker.h"
 
 @interface JQueryWebMaker()
 @property (nonatomic,weak)NSString *tagName; /* 标签名称 */
@@ -129,7 +130,7 @@
     
     self = [super init];
     if (self) {
-        /* 此处需要判断ID的有效性 */
+        /* 此处需要判断Class的有效性 */
         if(![self classNameValidity:className]){
             NSException *ex = [NSException exceptionWithName:@"Class传入错误" reason:@"JQueryWeb - 核查Class参数" userInfo:nil];
             [ex raise];
@@ -938,6 +939,9 @@
         }else if (_idName != NULL){
             JQueryWebIDMaker *idMaker = [JQueryWebIDMaker IDMakerName:self.idName context:self.context];
             return [idMaker parseTextTagNameWithSelect:select];
+        }else if (_className != NULL){
+            JQueryWebClassMaker *classMaker = [JQueryWebClassMaker ClassMakerName:self.className context:self.context];
+            return [classMaker parseTextClassNameWithSelect:select];
         }
     }
     
@@ -961,9 +965,11 @@
         }else if (_idName != NULL){
             JQueryWebIDMaker *idMaker = [JQueryWebIDMaker IDMakerName:self.idName context:self.context];
             return [idMaker parseTextTagNameWithSelect:select];
+        }else if (_className != NULL){
+            JQueryWebClassMaker *classMaker = [JQueryWebClassMaker ClassMakerName:self.className context:self.context];
+            return [classMaker parseTextClassNameWithSelect:select index:index];
         }
     }
-    
     
     return [NSString string];
 }
@@ -992,6 +998,9 @@
         }else if (_idName != NULL){
             JQueryWebIDMaker *idMaker = [JQueryWebIDMaker IDMakerName:self.idName option:self.option function:self.function];
             return [idMaker parseTextTagNameWithSelect:JQueryWebMakerON];
+        }else if (_className != NULL){
+            JQueryWebClassMaker *classMaker = [JQueryWebClassMaker ClassMakerName:self.className option:self.option function:self.function];
+            return [classMaker parseTextClassNameWithSelect:JQueryWebMakerON];
         }
     }
     
@@ -1020,6 +1029,9 @@
             }];
         }else if (_idName != NULL){
             [self saveOnWithOption:option function:function];
+        }else if (_className != NULL){
+            JQueryWebClassMaker *classMaker = [JQueryWebClassMaker ClassMakerName:self.className option:self.option function:self.function];
+            return [classMaker parseTextClassNameWithSelect:JQueryWebMakerON index:index];
         }
     }
     
@@ -1052,8 +1064,11 @@
             return [tagM parseTextTagNameWithSelect:JQueryWebMakerCSS];
         }];
     }else if (_idName != NULL){
-            JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName properties:proDict];
-            return [idM parseTextTagNameWithSelect:JQueryWebMakerCSS];
+        JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName properties:proDict];
+        return [idM parseTextTagNameWithSelect:JQueryWebMakerCSS];
+    }else if (_className != NULL){
+        JQueryWebClassMaker *classM = [JQueryWebClassMaker ClassMakerName:self.className properties:proDict];
+        return [classM parseTextClassNameWithSelect:JQueryWebMakerCSS];
     }
     
     return [NSString string];
@@ -1084,6 +1099,9 @@
         }];
     }else if (_idName != NULL){
         [self saveCSSWithProperties:properties];
+    }else if (_className != NULL){
+        JQueryWebClassMaker *classM = [JQueryWebClassMaker ClassMakerName:self.className properties:proDict];
+        return [classM parseTextClassNameWithSelect:JQueryWebMakerCSS index:index];
     }
     
     return [NSString string];
@@ -1099,6 +1117,9 @@
     }else if (_idName != NULL){
         JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName];
         return [idM parseTextTagNameWithSelect:JQueryWebMakerHidden];
+    }else if (_className != NULL){
+        JQueryWebClassMaker *classM = [JQueryWebClassMaker ClassMakerName:self.className];
+        return [classM parseTextClassNameWithSelect:JQueryWebMakerHidden];
     }
     
     return [NSString string];
@@ -1112,6 +1133,9 @@
         }];
     }else if(_idName != NULL){
         [self saveHidden];
+    }else if (_className != NULL){
+        JQueryWebClassMaker *classM = [JQueryWebClassMaker ClassMakerName:self.className];
+        return [classM parseTextClassNameWithSelect:JQueryWebMakerHidden index:index];
     }
     
     return [NSString string];
@@ -1127,6 +1151,9 @@
     }else if(_idName != NULL){
         JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName];
         return [idM parseTextTagNameWithSelect:JQueryWebMakerShow];
+    }else if (_className != NULL){
+        JQueryWebClassMaker *classM = [JQueryWebClassMaker ClassMakerName:self.className];
+        return [classM parseTextClassNameWithSelect:JQueryWebMakerShow];
     }
             
     return [NSString string];
@@ -1141,6 +1168,9 @@
         }];
     }else if(_idName != NULL){
         [self saveShow];
+    }else if (_className != NULL){
+        JQueryWebClassMaker *classM = [JQueryWebClassMaker ClassMakerName:self.className];
+        return [classM parseTextClassNameWithSelect:JQueryWebMakerShow index:index];
     }
     
     return [NSString string];
@@ -1170,8 +1200,10 @@
         }else if(_idName != NULL){
             JQueryWebIDMaker *idMaker = [JQueryWebIDMaker IDMakerName:self.idName option:self.option function:self.function];
             return [idMaker parseTextTagNameWithSelect:JQueryWebMakerShowWithFunction];
+        }else if (_className != NULL){
+            JQueryWebClassMaker *classMaker = [JQueryWebClassMaker ClassMakerName:self.className option:self.option function:self.function];
+            return [classMaker parseTextClassNameWithSelect:JQueryWebMakerShowWithFunction];
         }
-       
     }
     
     return [NSString string];
@@ -1200,6 +1232,9 @@
             }];
         }else if (_idName != NULL){
             [self saveShowWithOption:option function:function];
+        }else if (_className != NULL){
+            JQueryWebClassMaker *classMaker = [JQueryWebClassMaker ClassMakerName:self.className option:self.option function:self.function];
+            return [classMaker parseTextClassNameWithSelect:JQueryWebMakerShowWithFunction index:index];
         }
     }
     
@@ -1219,8 +1254,10 @@
         }else if (_idName != NULL){
             JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName width:width];
             return [idM parseTextTagNameWithSelect:JQueryWebMakerWidth];
+        }else if (_className != NULL){
+            JQueryWebClassMaker *classM = [JQueryWebClassMaker ClassMakerName:self.className width:width];
+            return [classM parseTextClassNameWithSelect:JQueryWebMakerWidth];
         }
-        
     }else if(height != -1 && width == -1){
         if (_tagName != NULL) {
             return [self parseTagName:_tagName options:^NSString *{
@@ -1231,6 +1268,9 @@
         }else if (_idName != NULL){
             JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName height:height];
             return [idM parseTextTagNameWithSelect:JQueryWebMakerHeight];
+        }else if (_className != NULL){
+            JQueryWebClassMaker *classM = [JQueryWebClassMaker ClassMakerName:self.className height:height];
+            return [classM parseTextClassNameWithSelect:JQueryWebMakerWidth];
         }
     }
     
@@ -1251,6 +1291,16 @@
             JQueryWebTagMaker *tag = [JQueryWebTagMaker TagMakerName:_tagName height:height];
             return [tag parseTextTagNameWithSelect:JQueryWebMakerHeight index:index];
         }
+    }else if (_className != NULL){
+        if (height == -1 && width != -1) {
+            /* 保存宽度 */
+            JQueryWebClassMaker *classM = [JQueryWebClassMaker ClassMakerName:_className width:width];
+            return [classM parseTextClassNameWithSelect:JQueryWebMakerWidth index:index];
+        }else if(height != -1 && width == -1){
+            /* 保存高度 */
+            JQueryWebClassMaker *classM = [JQueryWebClassMaker ClassMakerName:_className height:height];
+            return [classM parseTextClassNameWithSelect:JQueryWebMakerHeight index:index];
+        }
     }
     
     return [NSString string];
@@ -1269,6 +1319,9 @@
     }else if (_idName != NULL){
         JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName context:className];
         return [idM parseTextTagNameWithSelect:selectName];
+    }else if (_className != NULL){
+        JQueryWebClassMaker *classM = [JQueryWebClassMaker ClassMakerName:self.className context:className];
+        return [classM parseTextClassNameWithSelect:selectName index:index];
     }
     
     return [NSString string];
@@ -1287,6 +1340,9 @@
     }else if (_idName != NULL){
         JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName option:attrName function:context];
         return [idM parseTextTagNameWithSelect:selectStr];
+    }else if (_className != NULL){
+        JQueryWebClassMaker *classM = [JQueryWebClassMaker ClassMakerName:self.className option:attrName function:context];
+        return [classM parseTextClassNameWithSelect:selectStr index:index];
     }
     
     return [NSString string];

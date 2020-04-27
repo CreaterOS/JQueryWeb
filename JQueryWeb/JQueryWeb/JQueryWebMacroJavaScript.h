@@ -66,4 +66,29 @@
 /* JavaScript标签Attr操作 */
 #define JQUERY_JS_ID_ATTRVALUE_FUNCTION(TAGNAME,ATTRNAME,VALUE) [NSString stringWithFormat:@"document.getElementById('%@').setAttribute('%@','%@');",TAGNAME,ATTRNAME,VALUE];
 
+/* ----------------------------- CLASSNAME -----------------------------*/
+/* JavaScript标签文本内容 */
+#define JQUERY_JS_CLASS_TEXT_VAL(TAGNAME,COUNT,CONTEXT) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].innerText = '%@';",TAGNAME,COUNT,CONTEXT];
+/* JavaScript标签文本HTML格式 */
+#define JQUERY_JS_CLASS_HTML(TAGNAME,COUNT,CONTEXT) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].innerHTML = '%@';",TAGNAME,COUNT,CONTEXT];
+/* JavaScript标签ON操作 */
+#define JQUERY_JS_CLASS_ON(TAGNAME,COUNT,OPTION,FUNCTION) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].on%@ = %@;",TAGNAME,COUNT,OPTION,FUNCTION];
+/* JavaScript标签CSS操作 */
+#define JQUERY_JS_CLASS_CSS(TAGNAME,COUNT,KEY,VALUE) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].style.%@ = '%@';",TAGNAME,COUNT,KEY,VALUE];
+/* JavaScript标签SHOW操作 */
+#define JQUERY_JS_CLASS_SHOW(TAGNAME,COUNT) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].show = true;",TAGNAME,COUNT];
+#define JQUERY_JS_CLASS_SHOWF(TAGNAME,COUNT,ANIMATION,FUNCTION) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].show('%@') = %@;",TAGNAME,COUNT,ANIMATION,FUNCTION];
+#define JQUERY_JS_CLASS_SHOWA(TAGNAME,COUNT,CONTEXT) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].show('%@');",TAGNAME,COUNT,CONTEXT];
+/* JavaScript标签Hidden操作 */
+#define JQUERY_JS_CLASS_HIDDEN(TAGNAME,COUNT) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].hidden = true;",TAGNAME,COUNT];
+/* JavaScript标签Height操作 */
+#define JQUERY_JS_CLASS_HEIGHT(TAGNAME,COUNT,HEIGHT) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].style.height = '%zdpx';",TAGNAME,COUNT,HEIGHT];
+/* JavaScript标签Width操作 */
+#define JQUERY_JS_CLASS_WIDTH(TAGNAME,COUNT,WIDTH) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].style.width = '%zdpx';",TAGNAME,COUNT,WIDTH];
+/* JavaScript标签AddClass操作 */
+#define JQUERY_JS_CLASS_ADDCLASS(TAGNAME,COUNT,CLASSNAME) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].classList.add('%@');",TAGNAME,COUNT,CLASSNAME];
+/* JavaScript标签RemoveClass操作 */
+#define JQUERY_JS_CLASS_REMOVECLASS(TAGNAME,COUNT,CLASSNAME) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].classList.remove('%@');",TAGNAME,COUNT,CLASSNAME];
+/* JavaScript标签Attr操作 */
+#define JQUERY_JS_CLASS_ATTRVALUE_FUNCTION(TAGNAME,COUNT,ATTRNAME,VALUE) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].setAttribute('%@','%@');",TAGNAME,COUNT,ATTRNAME,VALUE];
 #endif /* JQueryWebMacroJavaScript_h */

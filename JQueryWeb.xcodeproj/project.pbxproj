@@ -18,6 +18,7 @@
 		688FECB124472AE00086B2BA /* JQueryWebUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 688FECB024472AE00086B2BA /* JQueryWebUITests.m */; };
 		688FECC224472FF50086B2BA /* JQueryWebTagMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 688FECC124472FF50086B2BA /* JQueryWebTagMaker.m */; };
 		688FECC5244731640086B2BA /* JQueryWebMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 688FECC4244731640086B2BA /* JQueryWebMaker.m */; };
+		68A5559324565CF800B71DFC /* JQueryWebClassMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A5559224565CF800B71DFC /* JQueryWebClassMaker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		688FECC124472FF50086B2BA /* JQueryWebTagMaker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JQueryWebTagMaker.m; sourceTree = "<group>"; };
 		688FECC3244731640086B2BA /* JQueryWebMaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JQueryWebMaker.h; sourceTree = "<group>"; };
 		688FECC4244731640086B2BA /* JQueryWebMaker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JQueryWebMaker.m; sourceTree = "<group>"; };
+		68A5559124565CF800B71DFC /* JQueryWebClassMaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JQueryWebClassMaker.h; sourceTree = "<group>"; };
+		68A5559224565CF800B71DFC /* JQueryWebClassMaker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JQueryWebClassMaker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +158,8 @@
 				688FECC124472FF50086B2BA /* JQueryWebTagMaker.m */,
 				6801F69C2451187B00D777EC /* JQueryWebIDMaker.h */,
 				6801F69D2451187B00D777EC /* JQueryWebIDMaker.m */,
+				68A5559124565CF800B71DFC /* JQueryWebClassMaker.h */,
+				68A5559224565CF800B71DFC /* JQueryWebClassMaker.m */,
 				688FECC3244731640086B2BA /* JQueryWebMaker.h */,
 				688FECC4244731640086B2BA /* JQueryWebMaker.m */,
 			);
@@ -295,6 +300,7 @@
 				688FEC9124472ADE0086B2BA /* ViewController.m in Sources */,
 				688FECC224472FF50086B2BA /* JQueryWebTagMaker.m in Sources */,
 				6801F69E2451187B00D777EC /* JQueryWebIDMaker.m in Sources */,
+				68A5559324565CF800B71DFC /* JQueryWebClassMaker.m in Sources */,
 				688FEC9C24472AE00086B2BA /* main.m in Sources */,
 				688FECC5244731640086B2BA /* JQueryWebMaker.m in Sources */,
 				688FEC8E24472ADE0086B2BA /* AppDelegate.m in Sources */,
