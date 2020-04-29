@@ -10,7 +10,8 @@
 #import "JQueryWebMacroJavaScript.h"
 #import "JQueryWebMaker.h"
 
-@interface ViewController ()
+@interface ViewController ()<UIWebViewDelegate>
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
 
@@ -18,6 +19,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.apple.com.cn"]]];
+    
     // Do any additional setup after loading the view, typically from a nib.
 //    NSString *str1 = JQueryWebMaker.JQuery(@"p").html(@"我是JQuery...");
 //    NSString *strs1 = JQueryWebMaker.JQueryID(@"#p").html(@"我是JQuery...");
@@ -142,12 +146,21 @@
 //    }
     
     
-    NSMutableArray *attrArray4 = JQueryWebMaker.JQueryClass(@".pClass").attrMore(15,@"name:CreaterOS",@"age:20",@"sex:boy",nil);
-    for (NSString *resStr in attrArray4) {
-        NSLog(@"%@",resStr);
-    }
+//    NSMutableArray *attrArray4 = JQueryWebMaker.JQueryClass(@".pClass").attrMore(15,@"name:CreaterOS",@"age:20",@"sex:boy",nil);
+//    for (NSString *resStr in attrArray4) {
+//        NSLog(@"%@",resStr);
+//    }
 
 }
 
+#pragma mark - UIWebViewDelegate
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+//    NSString *str = JQueryWebMaker.JQuery(@"p").html(@"我是JQuery...");
+//    NSString *str = JQueryWebMaker.JQueryID(@"#p").html(@"我是JQuery...");
+//    NSString *str = document.getElementsByClassName('ac-gf-footer-legal-copyright')[0].innerText = 'CreaterOS'
+    
+//    [webView stringByEvaluatingJavaScriptFromString:str];
+}
 
 @end

@@ -107,6 +107,8 @@ typedef NS_ENUM(NSUInteger,JQueryWebTagMakerIndex){
 
 #pragma mark - 解析文本内容标签
 - (NSString * _Nonnull)parseTextClassNameWithSelect:(JQueryWebMakerStyle)selectStr{
+    NSString *tempStr = [_className substringFromIndex:1];
+    _className = tempStr;
     NSString *indexStr = [NSString stringWithFormat:@"%zd",JQueryWebTagMakerDefaultIndex];
     if (selectStr == JQueryWebMakerTextORVal) {
         return JQUERY_JS_CLASS_TEXT_VAL(_className,indexStr,_context);
@@ -148,6 +150,8 @@ typedef NS_ENUM(NSUInteger,JQueryWebTagMakerIndex){
 
 - (NSString *)parseTextClassNameWithSelect:(JQueryWebMakerStyle)selectStr index:(NSUInteger)index{
     NSCParameterAssert(index >= 0);
+    NSString *tempStr = [_className substringFromIndex:1];
+    _className = tempStr;
     NSString *indexStr = [NSString stringWithFormat:@"%zd",index];
     if (selectStr == JQueryWebMakerTextORVal) {
         return JQUERY_JS_CLASS_TEXT_VAL(_className,indexStr,_context);

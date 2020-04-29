@@ -107,6 +107,8 @@ typedef NS_ENUM(NSUInteger,JQueryWebTagMakerIndex){
 
 #pragma mark - 解析文本内容标签
 - (NSString * _Nonnull)parseTextTagNameWithSelect:(JQueryWebMakerStyle)selectStr{
+    NSString *tempStr = [_idName substringFromIndex:1];
+    _idName = tempStr;
     if (selectStr == JQueryWebMakerTextORVal) {
         return JQUERY_JS_ID_TEXT_VAL(_idName,_context);
     }else if(selectStr == JQueryWebMakerHTML){
