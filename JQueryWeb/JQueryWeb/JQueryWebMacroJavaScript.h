@@ -42,53 +42,53 @@
 /* ----------------------------- IDNAME -----------------------------*/
 
 /* JavaScript标签文本内容 */
-#define JQUERY_JS_ID_TEXT_VAL(TAGNAME,CONTEXT) [NSString stringWithFormat:@"document.getElementById('%@').innerText = '%@'",TAGNAME,CONTEXT];
+#define JQUERY_JS_ID_TEXT_VAL(IDNAME,CONTEXT) [NSString stringWithFormat:@"document.getElementById('%@').innerText = '%@'",IDNAME,CONTEXT];
 /* JavaScript标签文本HTML格式 */
-#define JQUERY_JS_ID_HTML(TAGNAME,CONTEXT) [NSString stringWithFormat:@"document.getElementById('%@').innerHTML = '%@'",TAGNAME,CONTEXT];
+#define JQUERY_JS_ID_HTML(IDNAME,CONTEXT) [NSString stringWithFormat:@"document.getElementById('%@').innerHTML = '%@'",IDNAME,CONTEXT];
 /* JavaScript标签ON操作 */
-#define JQUERY_JS_ID_ON(TAGNAME,OPTION,FUNCTION) [NSString stringWithFormat:@"document.getElementById('%@').on%@ = %@",TAGNAME,OPTION,FUNCTION];
+#define JQUERY_JS_ID_ON(IDNAME,OPTION,FUNCTION) [NSString stringWithFormat:@"document.getElementById('%@').on%@ = %@",IDNAME,OPTION,FUNCTION];
 /* JavaScript标签CSS操作 */
-#define JQUERY_JS_ID_CSS(TAGNAME,KEY,VALUE) [NSString stringWithFormat:@"document.getElementById('%@').style.%@ = '%@'",TAGNAME,KEY,VALUE];
+#define JQUERY_JS_ID_CSS(IDNAME,KEY,VALUE) [NSString stringWithFormat:@"document.getElementById('%@').style.%@ = '%@'",IDNAME,KEY,VALUE];
 /* JavaScript标签SHOW操作 */
-#define JQUERY_JS_ID_SHOW(TAGNAME) [NSString stringWithFormat:@"document.getElementById('%@').show = true;",TAGNAME];
-#define JQUERY_JS_ID_SHOWF(TAGNAME,ANIMATION,FUNCTION) [NSString stringWithFormat:@"document.getElementById('%@').show('%@') = %@",TAGNAME,ANIMATION,FUNCTION];
-#define JQUERY_JS_ID_SHOWA(TAGNAME,CONTEXT) [NSString stringWithFormat:@"document.getElementById('%@').show('%@')",TAGNAME,CONTEXT];
+#define JQUERY_JS_ID_SHOW(IDNAME) [NSString stringWithFormat:@"document.getElementById('%@').show = true;",IDNAME];
+#define JQUERY_JS_ID_SHOWF(IDNAME,ANIMATION,FUNCTION) [NSString stringWithFormat:@"document.getElementById('%@').show('%@') = %@",IDNAME,ANIMATION,FUNCTION];
+#define JQUERY_JS_ID_SHOWA(IDNAME,CONTEXT) [NSString stringWithFormat:@"document.getElementById('%@').show('%@')",IDNAME,CONTEXT];
 /* JavaScript标签Hidden操作 */
-#define JQUERY_JS_ID_HIDDEN(TAGNAME) [NSString stringWithFormat:@"document.getElementById('%@').hidden = true",TAGNAME];
+#define JQUERY_JS_ID_HIDDEN(IDNAME) [NSString stringWithFormat:@"document.getElementById('%@').hidden = true",IDNAME];
 /* JavaScript标签Height操作 */
-#define JQUERY_JS_ID_HEIGHT(TAGNAME,HEIGHT) [NSString stringWithFormat:@"document.getElementById('%@').style.height = '%zdpx'",TAGNAME,HEIGHT];
+#define JQUERY_JS_ID_HEIGHT(IDNAME,HEIGHT) [NSString stringWithFormat:@"document.getElementById('%@').style.height = '%zdpx'",IDNAME,HEIGHT];
 /* JavaScript标签Width操作 */
-#define JQUERY_JS_ID_WIDTH(TAGNAME,WIDTH) [NSString stringWithFormat:@"document.getElementById('%@').style.width = '%zdpx'",TAGNAME,WIDTH];
+#define JQUERY_JS_ID_WIDTH(IDNAME,WIDTH) [NSString stringWithFormat:@"document.getElementById('%@').style.width = '%zdpx'",IDNAME,WIDTH];
 /* JavaScript标签AddClass操作 */
-#define JQUERY_JS_ID_ADDCLASS(TAGNAME,CLASSNAME) [NSString stringWithFormat:@"document.getElementById('%@').classList.add('%@')",TAGNAME,CLASSNAME];
+#define JQUERY_JS_ID_ADDCLASS(IDNAME,CLASSNAME) [NSString stringWithFormat:@"document.getElementById('%@').classList.add('%@')",IDNAME,CLASSNAME];
 /* JavaScript标签RemoveClass操作 */
-#define JQUERY_JS_ID_REMOVECLASS(TAGNAME,CLASSNAME) [NSString stringWithFormat:@"document.getElementById('%@').classList.remove('%@')",TAGNAME,CLASSNAME];
+#define JQUERY_JS_ID_REMOVECLASS(IDNAME,CLASSNAME) [NSString stringWithFormat:@"document.getElementById('%@').classList.remove('%@')",IDNAME,CLASSNAME];
 /* JavaScript标签Attr操作 */
-#define JQUERY_JS_ID_ATTRVALUE_FUNCTION(TAGNAME,ATTRNAME,VALUE) [NSString stringWithFormat:@"document.getElementById('%@').setAttribute('%@','%@')",TAGNAME,ATTRNAME,VALUE];
+#define JQUERY_JS_ID_ATTRVALUE_FUNCTION(IDNAME,ATTRNAME,VALUE) [NSString stringWithFormat:@"document.getElementById('%@').setAttribute('%@','%@')",IDNAME,ATTRNAME,VALUE];
 
 /* ----------------------------- CLASSNAME -----------------------------*/
 /* JavaScript标签文本内容 */
-#define JQUERY_JS_CLASS_TEXT_VAL(TAGNAME,COUNT,CONTEXT) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].innerText = '%@'",TAGNAME,COUNT,CONTEXT];
+#define JQUERY_JS_CLASS_TEXT_VAL(CLASSNAME,COUNT,CONTEXT) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].innerText = '%@'",CLASSNAME,COUNT,CONTEXT];
 /* JavaScript标签文本HTML格式 */
-#define JQUERY_JS_CLASS_HTML(TAGNAME,COUNT,CONTEXT) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].innerHTML = '%@'",TAGNAME,COUNT,CONTEXT];
+#define JQUERY_JS_CLASS_HTML(CLASSNAME,COUNT,CONTEXT) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].innerHTML = '%@'",CLASSNAME,COUNT,CONTEXT];
 /* JavaScript标签ON操作 */
-#define JQUERY_JS_CLASS_ON(TAGNAME,COUNT,OPTION,FUNCTION) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].on%@ = %@",TAGNAME,COUNT,OPTION,FUNCTION];
+#define JQUERY_JS_CLASS_ON(CLASSNAME,COUNT,OPTION,FUNCTION) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].on%@ = %@",CLASSNAME,COUNT,OPTION,FUNCTION];
 /* JavaScript标签CSS操作 */
-#define JQUERY_JS_CLASS_CSS(TAGNAME,COUNT,KEY,VALUE) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].style.%@ = '%@'",TAGNAME,COUNT,KEY,VALUE];
+#define JQUERY_JS_CLASS_CSS(CLASSNAME,COUNT,KEY,VALUE) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].style.%@ = '%@'",CLASSNAME,COUNT,KEY,VALUE];
 /* JavaScript标签SHOW操作 */
-#define JQUERY_JS_CLASS_SHOW(TAGNAME,COUNT) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].show = true",TAGNAME,COUNT];
-#define JQUERY_JS_CLASS_SHOWF(TAGNAME,COUNT,ANIMATION,FUNCTION) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].show('%@') = %@",TAGNAME,COUNT,ANIMATION,FUNCTION];
-#define JQUERY_JS_CLASS_SHOWA(TAGNAME,COUNT,CONTEXT) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].show('%@')",TAGNAME,COUNT,CONTEXT];
+#define JQUERY_JS_CLASS_SHOW(CLASSNAME,COUNT) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].show = true",CLASSNAME,COUNT];
+#define JQUERY_JS_CLASS_SHOWF(CLASSNAME,COUNT,ANIMATION,FUNCTION) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].show('%@') = %@",CLASSNAME,COUNT,ANIMATION,FUNCTION];
+#define JQUERY_JS_CLASS_SHOWA(CLASSNAME,COUNT,CONTEXT) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].show('%@')",CLASSNAME,COUNT,CONTEXT];
 /* JavaScript标签Hidden操作 */
-#define JQUERY_JS_CLASS_HIDDEN(TAGNAME,COUNT) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].hidden = true",TAGNAME,COUNT];
+#define JQUERY_JS_CLASS_HIDDEN(CLASSNAME,COUNT) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].hidden = true",CLASSNAME,COUNT];
 /* JavaScript标签Height操作 */
-#define JQUERY_JS_CLASS_HEIGHT(TAGNAME,COUNT,HEIGHT) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].style.height = '%zdpx'",TAGNAME,COUNT,HEIGHT];
+#define JQUERY_JS_CLASS_HEIGHT(CLASSNAME,COUNT,HEIGHT) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].style.height = '%zdpx'",CLASSNAME,COUNT,HEIGHT];
 /* JavaScript标签Width操作 */
-#define JQUERY_JS_CLASS_WIDTH(TAGNAME,COUNT,WIDTH) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].style.width = '%zdpx'",TAGNAME,COUNT,WIDTH];
+#define JQUERY_JS_CLASS_WIDTH(CLASSNAME,COUNT,WIDTH) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].style.width = '%zdpx'",CLASSNAME,COUNT,WIDTH];
 /* JavaScript标签AddClass操作 */
-#define JQUERY_JS_CLASS_ADDCLASS(TAGNAME,COUNT,CLASSNAME) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].classList.add('%@')",TAGNAME,COUNT,CLASSNAME];
+#define JQUERY_JS_CLASS_ADDCLASS(CLASSNAME,COUNT,CLASSNAMES) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].classList.add('%@')",CLASSNAME,COUNT,CLASSNAMES];
 /* JavaScript标签RemoveClass操作 */
-#define JQUERY_JS_CLASS_REMOVECLASS(TAGNAME,COUNT,CLASSNAME) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].classList.remove('%@')",TAGNAME,COUNT,CLASSNAME];
+#define JQUERY_JS_CLASS_REMOVECLASS(CLASSNAME,COUNT,CLASSNAMES) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].classList.remove('%@')",CLASSNAME,COUNT,CLASSNAMES];
 /* JavaScript标签Attr操作 */
-#define JQUERY_JS_CLASS_ATTRVALUE_FUNCTION(TAGNAME,COUNT,ATTRNAME,VALUE) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].setAttribute('%@','%@')",TAGNAME,COUNT,ATTRNAME,VALUE];
+#define JQUERY_JS_CLASS_ATTRVALUE_FUNCTION(CLASSNAME,COUNT,ATTRNAME,VALUE) [NSString stringWithFormat:@"document.getElementsByClassName('%@')[%@].setAttribute('%@','%@')",CLASSNAME,COUNT,ATTRNAME,VALUE];
 #endif /* JQueryWebMacroJavaScript_h */

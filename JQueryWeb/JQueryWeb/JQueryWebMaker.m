@@ -938,7 +938,7 @@
             }];
         }else if (_idName != NULL){
             JQueryWebIDMaker *idMaker = [JQueryWebIDMaker IDMakerName:self.idName context:self.context];
-            return [idMaker parseTextTagNameWithSelect:select];
+            return [idMaker parseTextIDNameWithSelect:select];
         }else if (_className != NULL){
             JQueryWebClassMaker *classMaker = [JQueryWebClassMaker ClassMakerName:self.className context:self.context];
             return [classMaker parseTextClassNameWithSelect:select];
@@ -964,7 +964,7 @@
             }];
         }else if (_idName != NULL){
             JQueryWebIDMaker *idMaker = [JQueryWebIDMaker IDMakerName:self.idName context:self.context];
-            return [idMaker parseTextTagNameWithSelect:select];
+            return [idMaker parseTextIDNameWithSelect:select];
         }else if (_className != NULL){
             JQueryWebClassMaker *classMaker = [JQueryWebClassMaker ClassMakerName:self.className context:self.context];
             return [classMaker parseTextClassNameWithSelect:select index:index];
@@ -997,7 +997,7 @@
             }];
         }else if (_idName != NULL){
             JQueryWebIDMaker *idMaker = [JQueryWebIDMaker IDMakerName:self.idName option:self.option function:self.function];
-            return [idMaker parseTextTagNameWithSelect:JQueryWebMakerON];
+            return [idMaker parseTextIDNameWithSelect:JQueryWebMakerON];
         }else if (_className != NULL){
             JQueryWebClassMaker *classMaker = [JQueryWebClassMaker ClassMakerName:self.className option:self.option function:self.function];
             return [classMaker parseTextClassNameWithSelect:JQueryWebMakerON];
@@ -1028,7 +1028,8 @@
                 return [tagMaker parseTextTagNameWithSelect:JQueryWebMakerON index:index];
             }];
         }else if (_idName != NULL){
-            [self saveOnWithOption:option function:function];
+            JQueryWebIDMaker *idMaker = [JQueryWebIDMaker IDMakerName:self.idName option:self.option function:self.function];
+            return [idMaker parseTextIDNameWithSelect:JQueryWebMakerON];
         }else if (_className != NULL){
             JQueryWebClassMaker *classMaker = [JQueryWebClassMaker ClassMakerName:self.className option:self.option function:self.function];
             return [classMaker parseTextClassNameWithSelect:JQueryWebMakerON index:index];
@@ -1065,7 +1066,7 @@
         }];
     }else if (_idName != NULL){
         JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName properties:proDict];
-        return [idM parseTextTagNameWithSelect:JQueryWebMakerCSS];
+        return [idM parseTextIDNameWithSelect:JQueryWebMakerCSS];
     }else if (_className != NULL){
         JQueryWebClassMaker *classM = [JQueryWebClassMaker ClassMakerName:self.className properties:proDict];
         return [classM parseTextClassNameWithSelect:JQueryWebMakerCSS];
@@ -1116,7 +1117,7 @@
         }];
     }else if (_idName != NULL){
         JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName];
-        return [idM parseTextTagNameWithSelect:JQueryWebMakerHidden];
+        return [idM parseTextIDNameWithSelect:JQueryWebMakerHidden];
     }else if (_className != NULL){
         JQueryWebClassMaker *classM = [JQueryWebClassMaker ClassMakerName:self.className];
         return [classM parseTextClassNameWithSelect:JQueryWebMakerHidden];
@@ -1150,7 +1151,7 @@
         }];
     }else if(_idName != NULL){
         JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName];
-        return [idM parseTextTagNameWithSelect:JQueryWebMakerShow];
+        return [idM parseTextIDNameWithSelect:JQueryWebMakerShow];
     }else if (_className != NULL){
         JQueryWebClassMaker *classM = [JQueryWebClassMaker ClassMakerName:self.className];
         return [classM parseTextClassNameWithSelect:JQueryWebMakerShow];
@@ -1199,7 +1200,7 @@
             }];
         }else if(_idName != NULL){
             JQueryWebIDMaker *idMaker = [JQueryWebIDMaker IDMakerName:self.idName option:self.option function:self.function];
-            return [idMaker parseTextTagNameWithSelect:JQueryWebMakerShowWithFunction];
+            return [idMaker parseTextIDNameWithSelect:JQueryWebMakerShowWithFunction];
         }else if (_className != NULL){
             JQueryWebClassMaker *classMaker = [JQueryWebClassMaker ClassMakerName:self.className option:self.option function:self.function];
             return [classMaker parseTextClassNameWithSelect:JQueryWebMakerShowWithFunction];
@@ -1253,7 +1254,7 @@
             }];
         }else if (_idName != NULL){
             JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName width:width];
-            return [idM parseTextTagNameWithSelect:JQueryWebMakerWidth];
+            return [idM parseTextIDNameWithSelect:JQueryWebMakerWidth];
         }else if (_className != NULL){
             JQueryWebClassMaker *classM = [JQueryWebClassMaker ClassMakerName:self.className width:width];
             return [classM parseTextClassNameWithSelect:JQueryWebMakerWidth];
@@ -1267,7 +1268,7 @@
             }];
         }else if (_idName != NULL){
             JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName height:height];
-            return [idM parseTextTagNameWithSelect:JQueryWebMakerHeight];
+            return [idM parseTextIDNameWithSelect:JQueryWebMakerHeight];
         }else if (_className != NULL){
             JQueryWebClassMaker *classM = [JQueryWebClassMaker ClassMakerName:self.className height:height];
             return [classM parseTextClassNameWithSelect:JQueryWebMakerWidth];
@@ -1318,7 +1319,7 @@
         }];
     }else if (_idName != NULL){
         JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName context:className];
-        return [idM parseTextTagNameWithSelect:selectName];
+        return [idM parseTextIDNameWithSelect:selectName];
     }else if (_className != NULL){
         JQueryWebClassMaker *classM = [JQueryWebClassMaker ClassMakerName:self.className context:className];
         return [classM parseTextClassNameWithSelect:selectName index:index];
@@ -1339,7 +1340,7 @@
         }];
     }else if (_idName != NULL){
         JQueryWebIDMaker *idM = [JQueryWebIDMaker IDMakerName:self.idName option:attrName function:context];
-        return [idM parseTextTagNameWithSelect:selectStr];
+        return [idM parseTextIDNameWithSelect:selectStr];
     }else if (_className != NULL){
         JQueryWebClassMaker *classM = [JQueryWebClassMaker ClassMakerName:self.className option:attrName function:context];
         return [classM parseTextClassNameWithSelect:selectStr index:index];

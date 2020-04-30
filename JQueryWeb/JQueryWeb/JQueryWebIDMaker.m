@@ -106,9 +106,10 @@ typedef NS_ENUM(NSUInteger,JQueryWebTagMakerIndex){
 }
 
 #pragma mark - 解析文本内容标签
-- (NSString * _Nonnull)parseTextTagNameWithSelect:(JQueryWebMakerStyle)selectStr{
+- (NSString * _Nonnull)parseTextIDNameWithSelect:(JQueryWebMakerStyle)selectStr{
     NSString *tempStr = [_idName substringFromIndex:1];
     _idName = tempStr;
+    
     if (selectStr == JQueryWebMakerTextORVal) {
         return JQUERY_JS_ID_TEXT_VAL(_idName,_context);
     }else if(selectStr == JQueryWebMakerHTML){
@@ -157,12 +158,7 @@ typedef NS_ENUM(NSUInteger,JQueryWebTagMakerIndex){
 - (NSString *__nonnull)humpStr:(NSString *__nonnull)str{
     NSCParameterAssert(str != NULL);
     
-    /* 处理option字符串,防止用户没有使用驼峰使用 */
-    NSString *firstStr = [str substringWithRange:NSMakeRange(0, 1)];
-    NSString *upcaseStr = [firstStr uppercaseString];
-    NSString *lastStr = [str substringWithRange:NSMakeRange(1, _option.length-1)];
-    
-    return [upcaseStr stringByAppendingString:lastStr];
+    return [[str substringWithRange:NSMakeRange(0, _option.length)] lowercaseString];
 }
 
 - (NSString *__nonnull)removeFunctionSemicolon:(NSString *__nonnull)str{

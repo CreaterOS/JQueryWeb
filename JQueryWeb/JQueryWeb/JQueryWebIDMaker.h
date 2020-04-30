@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)IDMakerName:(NSString *)idName width:(NSUInteger)width;
 
 /* 解析 */
-- (NSString * _Nonnull)parseTextTagNameWithSelect:(JQueryWebMakerStyle)selectStr;
+- (NSString * _Nonnull)parseTextIDNameWithSelect:(JQueryWebMakerStyle)selectStr;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -120,6 +120,7 @@ typedef NS_ENUM(NSUInteger,JQueryWebTagMakerIndex){
     }else if (selectStr == JQueryWebMakerON){
         NSString *newOptionStr = [self humpStr:_option];
         NSString *newFunction = [self removeFunctionSemicolon:_function];
+        NSLog(@"%@,%@",newOptionStr,newFunction);
         return JQUERY_JS_TAG_ON(_tagName, indexStr, newOptionStr, newFunction);
     }else if (selectStr == JQueryWebMakerCSS){
         /* 从保存的数组中获得key和value */
@@ -203,12 +204,7 @@ typedef NS_ENUM(NSUInteger,JQueryWebTagMakerIndex){
 - (NSString *__nonnull)humpStr:(NSString *__nonnull)str{
     NSCParameterAssert(str != NULL);
     
-    /* 处理option字符串,防止用户没有使用驼峰使用 */
-    NSString *firstStr = [str substringWithRange:NSMakeRange(0, 1)];
-    NSString *upcaseStr = [firstStr uppercaseString];
-    NSString *lastStr = [str substringWithRange:NSMakeRange(1, _option.length-1)];
-    
-    return [upcaseStr stringByAppendingString:lastStr];
+    return [[str substringWithRange:NSMakeRange(0, _option.length)] lowercaseString];
 }
 
 - (NSString *__nonnull)removeFunctionSemicolon:(NSString *__nonnull)str{
