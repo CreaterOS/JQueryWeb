@@ -1,0 +1,37 @@
+//
+//  JQueryWebONOptionsHeader.swift
+//  JQueryWebSwift
+//
+//  Created by Bryant Reyn on 2020/5/16.
+//  Copyright © 2020 Bryant Reyn. All rights reserved.
+//
+
+import Foundation
+let ALLOPTIONS : [String] = NSArray.init(objects: JQUERY_JS_BLUR,JQUERY_JS_FOCUS,JQUERY_JS_FOCUSION,JQUERY_JS_FOCUSOUT,JQUERY_JS_LOAD,JQUERY_JS_RESIZE,JQUERY_JS_SCROLL,JQUERY_JS_UNLOAD,JQUERY_JS_CLICK,JQUERY_JS_DBLCLICK,JQUERY_JS_MOUSEDOWN,JQUERY_JS_MOUSEUP,JQUERY_JS_MOUSEMOVE,JQUERY_JS_MOUSEOVER,JQUERY_JS_MOUSEOUT,JQUERY_JS_MOUSEENTER,JQUERY_JS_MOUSELEAVE,JQUERY_JS_CHANGE,JQUERY_JS_SELECT,JQUERY_JS_SUBMIT,JQUERY_JS_KEYDOWN,JQUERY_JS_KEYPRESS,JQUERY_JS_KEYUP,JQUERY_JS_ERROR,JQUERY_JS_CONTEXTMENU) as! [String] 
+
+/* JQuery所有支持的on操作 */
+let JQUERY_JS_BLUR = "blur"
+let JQUERY_JS_FOCUS = "focus"
+let JQUERY_JS_FOCUSION = "focusin"
+let JQUERY_JS_FOCUSOUT = "focusout"
+let JQUERY_JS_LOAD = "load"
+let JQUERY_JS_RESIZE = "resize"
+let JQUERY_JS_SCROLL = "scroll"
+let JQUERY_JS_UNLOAD = "unload"
+let JQUERY_JS_CLICK = "click"
+let JQUERY_JS_DBLCLICK = "dblclick"
+let JQUERY_JS_MOUSEDOWN = "mousedown"
+let JQUERY_JS_MOUSEUP = "mouseup"
+let JQUERY_JS_MOUSEMOVE = "mousemove"
+let JQUERY_JS_MOUSEOVER = "mouseover"
+let JQUERY_JS_MOUSEOUT = "mouseout"
+let JQUERY_JS_MOUSEENTER = "mouseenter"
+let JQUERY_JS_MOUSELEAVE = "mouseleave"
+let JQUERY_JS_CHANGE = "change"
+let JQUERY_JS_SELECT = "select"
+let JQUERY_JS_SUBMIT = "submit"
+let JQUERY_JS_KEYDOWN = "keydown"
+let JQUERY_JS_KEYPRESS = "keypress"
+let JQUERY_JS_KEYUP = "keyup"
+let JQUERY_JS_ERROR = "error"
+let JQUERY_JS_CONTEXTMENU = "contextmenu"

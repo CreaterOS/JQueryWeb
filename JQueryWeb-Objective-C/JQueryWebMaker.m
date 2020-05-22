@@ -1271,7 +1271,7 @@
             return [idM parseTextIDNameWithSelect:JQueryWebMakerHeight];
         }else if (_className != NULL){
             JQueryWebClassMaker *classM = [JQueryWebClassMaker ClassMakerName:self.className height:height];
-            return [classM parseTextClassNameWithSelect:JQueryWebMakerWidth];
+            return [classM parseTextClassNameWithSelect:JQueryWebMakerHeight];
         }
     }
     
