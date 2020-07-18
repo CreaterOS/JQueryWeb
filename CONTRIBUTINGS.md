@@ -1,0 +1,1 @@
+JQueryWeb 提供了链式编程思想实现JQuery无缝转换JS的轻量级框架
